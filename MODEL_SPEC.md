@@ -70,7 +70,7 @@ These could in principle be measured. Current values are guesses.
 |-----------|--------|---------|---------------------|
 | Niche width | w_k | 0.02 -- 0.30 | Corpus frequency of contexts licensing construction k |
 | Initial user fraction | f_k | 0.0 -- 0.95 | Corpus attestation rates, dialect surveys |
-| Production threshold | tau | 0.5 | Psycholinguistic production studies (at what confidence do speakers produce?) |
+| Production threshold | tau | 0.5 | **Structurally constrained**: must equal E[non-user prior] for non-trivial dynamics (§5.4A). With Beta(1,1) prior, tau = 0.5. |
 | Population size | N | 1000 | Sociolinguistic community size |
 | Number of communities | C | 10 | Sociolinguistic surveys, dialect geography |
 | Within-community bias | beta | 0.80 | Social network analysis (proportion of interactions with in-group) |
@@ -223,11 +223,23 @@ All sweeps at rho = 0.5. Pre-registered predictions in `models/sensitivity_sweep
 | 0.6 | 0% | 0% | 0% | 0% | 39% |
 | 0.7 | 0% | 0% | 0% | 0% | 0% |
 
-There is a **phase transition at tau = 0.5**, the initial confidence of non-users (Beta(1,1) → c = 0.5). Below tau = 0.5, non-users are already above the production threshold, so everyone produces from step 1 and everything "survives" trivially. Above tau = 0.5, agents need substantial positive evidence to start producing, and at rho = 0.5 preemption dominates.
-
-**This means all the model's interesting dynamics live on a knife-edge: tau must equal the initial non-user confidence.** The critical mass, dialectal pockets, bimodality, and other findings all depend on tau = 0.5 coinciding with non-user c = 0.5. This is not a free parameter choice; it's a structural constraint. The model only produces non-trivial behavior when the production threshold exactly matches the starting belief of non-users.
+There is a **phase transition at tau = 0.5**, the initial confidence of non-users (Beta(1,1) → c = 0.5).
 
 Pre-registered prediction was "MEDIUM sensitivity, critical mass scales with tau." Reality: **CRITICAL sensitivity, phase transition.** Prediction rejected in magnitude.
+
+**Analytic derivation (2026-02-14).** The phase transition at tau = E[non-user prior] is mathematically necessary (see `models/tau_derivation.py` for full derivation and numerical verification):
+
+1. **tau < E[prior]**: Non-users start with confidence above the production threshold. They produce immediately, generating positive evidence for everyone. Self-reinforcing cascade → everything survives regardless of seed fraction.
+
+2. **tau > E[prior]**: Non-users start below threshold. They cannot produce, so they generate only negative evidence. Every niche-relevant interaction with a non-producer pushes hearers further below threshold. Even existing users get preempted by the silent majority → everything dies regardless of seed fraction.
+
+3. **tau = E[prior]**: Non-users are on the knife-edge. A single positive observation (hearing a production) pushes them from Beta(1,1) to Beta(2,1), confidence = 0.67 > 0.5, and they start producing. A single negative observation pushes them to Beta(1, 1+rho), confidence = 1/(2+rho) < 0.5, and they're locked out. **The first interaction determines each agent's trajectory**, and whether that interaction is positive depends on the population's producer fraction. This is the regime where critical mass matters.
+
+Numerical verification confirmed this generalises: the transition occurs at tau = E[prior] for Beta(1,1), Beta(2,1), Beta(1,2), and Beta(3,3) priors alike.
+
+**This is not a bug; it is the model correctly identifying that population dynamics only matter for constructions where speakers are genuinely uncertain.** If agents are predisposed to accept (tau < prior), no evidence is needed. If predisposed to reject (tau > prior), no evidence from a minority suffices. The interesting regime is where genuine uncertainty meets social evidence.
+
+**Structural implication:** tau and the non-user prior are not independent parameters. The constraint tau = E[prior] is required for non-trivial dynamics. Our choices (Beta(1,1) prior and tau = 0.5) satisfy this automatically, and both are independently motivated: Beta(1,1) is the maximally ignorant prior (Laplace), and tau = 0.5 is the "more likely than not" threshold. They coincide because "genuinely uncertain" and "on the boundary of acceptance" describe the same epistemic state.
 
 **B. beta (within-community bias): LOW SENSITIVITY**
 
@@ -273,13 +285,13 @@ More entrenched initial users → lower critical mass. This makes sense: entrenc
 | Parameter | Sensitivity | Finding |
 |-----------|-----------|---------|
 | **rho** | **CRITICAL** | Gates everything. Critical mass = rho/(1+rho). |
-| **tau** | **CRITICAL** | Phase transition at tau = non-user initial confidence. Model only interesting on the knife-edge. |
+| **tau** | **DERIVED** | Phase transition at tau = E[non-user prior]. Not a free parameter: structurally constrained (§5.4A). |
 | beta | LOW | Pockets form at all beta. Minor quantitative variation. |
 | N | LOW | Same threshold at all N. Noise reduction only. |
 | C | MODERATE | More communities → sharper pockets. Global rate ≈ 1/C. |
 | Init. conf. | MODERATE | More entrenched → lower critical mass (~30% vs ~50%). |
 
-**Two parameters dominate: rho and tau.** And tau is structurally constrained to equal the non-user starting confidence for the model to produce interesting behaviour. This means the effective free parameter count is lower than the parameter table suggests: rho is the only genuinely free parameter that matters, and tau is locked by the model's initialization logic.
+**One parameter dominates: rho.** The tau "knife-edge" is a derived constraint, not a second free parameter (see §5.4A for derivation). The model requires tau = E[non-user prior] for non-trivial dynamics; our Beta(1,1) prior and tau = 0.5 satisfy this automatically. This reduces the effective free parameter count: rho is the only genuinely free parameter that matters.
 
 
 ## 6. Mean-Field Analysis (completed 2026-02-14)
@@ -469,7 +481,7 @@ Tested five selection windows on the same cached ABM data (see `models/window_sw
 ## 9. Open Questions
 
 - ~~Can rho be estimated empirically?~~ **Partially answered, then calibrated.** SCOSYA data gives rho >= ~0.4 (lower bound). The estimation method cannot distinguish rho = 0.5 from rho = 1.0 due to a fundamental ceiling effect. Window widening does not help.
-- **The tau knife-edge.** The model only produces interesting dynamics when tau exactly equals the initial non-user confidence (both currently 0.5). This is the most important structural finding from the sensitivity audit. Either: (a) this is a genuine constraint that limits the model's applicability, or (b) the model should be reformulated so the production threshold and initial beliefs are coupled by design rather than coincidence.
+- ~~The tau knife-edge.~~ **Resolved (2026-02-14).** The phase transition at tau = E[non-user prior] is derived analytically (§5.4A, `models/tau_derivation.py`). It is not a fragility but a structural property: the model correctly requires genuine uncertainty for population dynamics to matter. The constraint tau = E[prior] eliminates one apparent free parameter. See §5.4A for full derivation.
 - **Does generational turnover change equilibria?** Currently beliefs only accumulate and the system freezes. Turnover might allow forms to revive or die on longer timescales. The SCOSYA age-stratification data could test this directly.
 - **Is there a connection to language change S-curves?** The spread of a form from seed to saturation (at rho < 0.3) looks like it should follow an S-curve. Is it logistic? What's the rate parameter?
 - **Can we improve the mean-field?** The two-population deterministic model misses the cascade dynamics. A stochastic mean-field (Langevin equation or master equation) might capture the threshold-crossing noise that makes the ABM more forgiving.

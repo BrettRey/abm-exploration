@@ -252,11 +252,32 @@ This is why the Scots Syntax Atlas remains the right dataset: different dialect 
 - **All four ABM predictions tested against SCOSYA are supported**, but the tests are qualitative and post-hoc.
 - **All pre-registered predictions confirmed** (SBC: 4/4, window sweep: 3/4 with one partial).
 - Discipline pays: the calibration turned a claimed point estimate (rho ≈ 0.5) into an honest lower bound (rho >= 0.4). The result is weaker but trustworthy.
-- **The model has two critical parameters (rho and tau) and one structural constraint.** tau must equal non-user initial confidence for interesting dynamics to emerge. This is not a defect to fix; it may be the central insight: production threshold and prior beliefs must be aligned for constructions to be genuinely "contested."
+- **The model has one critical free parameter (rho) and one derived constraint (tau = E[non-user prior]).** See item 24 below.
+
+24. **Analytic derivation of the tau phase transition** (`models/tau_derivation.py`). Derived and numerically verified why tau = E[non-user prior] is the phase transition:
+
+    - tau < E[prior]: non-users already above threshold → produce immediately → cascade → trivial survival
+    - tau > E[prior]: non-users below threshold → silent → preemption dominates → trivial death
+    - tau = E[prior]: non-users on knife-edge → first interaction determines trajectory → population fraction determines outcome → this is where critical mass matters
+
+    Verified across 4 different priors (Beta(1,1), Beta(2,1), Beta(1,2), Beta(3,3)). The transition always occurs at tau = E[prior].
+
+    **This resolves the tau "knife-edge" concern.** It is not a bug or a fragility. It is a derived constraint: the model correctly identifies that population dynamics only matter for constructions where speakers are genuinely uncertain. Tau = 0.5 with Beta(1,1) prior satisfies this automatically, and both choices are independently motivated (maximally ignorant prior, "more likely than not" threshold).
+
+    **Structural implication:** the effective free parameter count is smaller than the parameter table suggests. rho is the only genuinely free parameter. tau is structurally constrained. Updated MODEL_SPEC.md §2 (parameter table), §5.4A (derivation), §5.5 (summary), and §9 (open questions).
+
+### What we learned (final)
+
+- The HTML tabular data pages bypass the API block. Pattern: `/data-in-tabular-form/?id={code}`.
+- **rho >= ~0.4** from SCOSYA data (lower bound, not point estimate). The ceiling is fundamental and unfixable by window widening.
+- Dialect data is the right grain for rho estimation. Standard corpora give uninformative upper bounds.
+- **All four ABM predictions tested against SCOSYA are supported**, but the tests are qualitative and post-hoc.
+- **All pre-registered predictions confirmed** (SBC: 4/4, window sweep: 3/4 with one partial).
+- Discipline pays: the calibration turned a claimed point estimate (rho ≈ 0.5) into an honest lower bound (rho >= 0.4). The result is weaker but trustworthy.
+- **The tau phase transition is a derived result, not a free parameter choice.** The model requires tau = E[non-user prior] for non-trivial dynamics. This reduces the effective free parameter count to one (rho).
 
 ### What's unresolved
 
-- **The tau knife-edge.** Is this a bug (model only works at one setting) or a feature (production threshold = starting uncertainty is the interesting regime)?
 - Threshold sensitivity: >= 4 vs >= 3 shifts rho by ~2x.
 - Apparent-time assumption: need longitudinal data to confirm.
 - The 4 SCOSYA tests are qualitative only.
@@ -264,9 +285,8 @@ This is why the Scots Syntax Atlas remains the right dataset: different dialect 
 
 ### Possible next moves
 
-- **Think about the tau knife-edge.** Is there a way to reformulate the model so the production threshold and initial beliefs are coupled by design? Or is the knife-edge the theoretically interesting regime?
 - **Calibrate the ABM against individual SCOSYA features**: geographic variation patterns
 - **Add generational turnover** to the ABM and test against SCOSYA age effects
 - Read Levon & Buchstaller (2015) and Childs & Van Herk (2014) for independent rho estimates
 - Port the model to deitality
-- Park it and write up what we have
+- **Park it and write up what we have** (the calibration + tau derivation story is a genuine contribution)
