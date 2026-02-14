@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+
+# Data (large files, different licenses)
+data/mega/mega-acceptability-v2.zip
+data/mega/mega-acceptability-v2/
+data/mega/mega-acceptability-v1.tsv
+data/mega/mega-acceptability-v2.tsv
+data/mega/frequency_acceptability.ipynb
+data/scots/all_ratings.json
+data/scots/all_ratings.csv
+data/scots/per_attribute/
+
+# Generated plots (regenerable from code)
+*.png
+
+# OS
+.DS_Store

@@ -1,0 +1,260 @@
+"Data exported from:",http://scotssyntaxatlas.ac.uk/api/v1/csv/attributes
+pid,code,pname,pdesc,atname,atdescription,aid,soundclips
+10,e4,"ADJECTIVES - ADJECTIVE SHIFT",,"He's really <b>big getting</b>.",,87,https://scotssyntaxatlas.ac.uk/feature-sound-clips/e4-90.mp3
+10,e5,"ADJECTIVES - ADJECTIVE SHIFT",,"He's dead <b>angry getting</b>.",,88
+52,q37,"ADJECTIVES - INTENSIFIERS",,"That's <b>over big</b> a bit for me.",,295
+36,q11,"AGREEMENT - MEASURES",,"It was <b>eight pound</b>.",,167
+36,q12,"AGREEMENT - MEASURES",,"It's <b>ten mile</b> away.",,168
+36,q13,"AGREEMENT - MEASURES",," I've no seen him in <b>fifteen year</b>!",,169
+36,q14,"AGREEMENT - MEASURES",,"He could put away <b>seven or eight pint</b> in one sitting.",,238
+36,q15,"AGREEMENT - MEASURES",,"That's <b>seven long mile</b> from here.",,244
+35,q5,"AGREEMENT - MUCH/MANY",,"There's <b>too much people</b> here.",,161
+35,q6,"AGREEMENT - MUCH/MANY",,"No one got <b>as much presents</b> as him.",,162
+1,a12,"AGREEMENT - NORTHERN SUBJECT RULE",,"My <b>neighbours goes</b> there all the time.",,18
+1,a13,"AGREEMENT - NORTHERN SUBJECT RULE",,"<b>They goes</b> there for a drink every Friday.",,19
+1,a17,"AGREEMENT - NORTHERN SUBJECT RULE",,"<b>They never was</b> that happy together.",,20
+1,a29,"AGREEMENT - NORTHERN SUBJECT RULE",,"<b>Was your neighbours</b> having a party?",,15
+1,a3,"AGREEMENT - NORTHERN SUBJECT RULE",,"Some <b>folk was</b> queuing up outside.",,13,"https://scotssyntaxatlas.ac.uk/feature-sound-clips/a3-71.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/a3-72.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/a3-229.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/a3-282.mp3"
+1,a4,"AGREEMENT - NORTHERN SUBJECT RULE",,"<b>They was</b> happy to help.",,14
+1,A57,"AGREEMENT - NORTHERN SUBJECT RULE",,"<b>Me and my pal was</b> here first.",,184,"https://scotssyntaxatlas.ac.uk/feature-sound-clips/A57-75.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/A57-76.mp3"
+1,A58,"AGREEMENT - NORTHERN SUBJECT RULE",,"<b>They was</b> just sitting in the cupboard anyway.",,183
+1,A59,"AGREEMENT - NORTHERN SUBJECT RULE",,"Even the bigger <b>shops was</b> quiet.",,182
+1,a8,"AGREEMENT - NORTHERN SUBJECT RULE",,"Some <b>folk doesnae</b> like chocolate.",,16
+1,a9,"AGREEMENT - NORTHERN SUBJECT RULE",,"<b>They doesnae</b> argue much these days.",,10
+34,a1,"AGREEMENT - WAS/WERE",,"<b>You was</b> supposed to meet me at your house.",,3,"https://scotssyntaxatlas.ac.uk/feature-sound-clips/a1-61.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/a1-62.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/a1-64.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/a1-228.mp3"
+34,a2,"AGREEMENT - WAS/WERE",,"<b>We was</b> waiting for ages.",,6,"https://scotssyntaxatlas.ac.uk/feature-sound-clips/a2-48.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/a2-230.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/a2-231.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/a2-232.mp3"
+34,a38,"AGREEMENT - WAS/WERE",,"Aye, <b>there were a man</b> at the door earlier.",,21
+9,d3,"AUXILIARIES - AFTER-PERFECT",,"<b>I'm just after</b> speaking to him.",,70,https://scotssyntaxatlas.ac.uk/feature-sound-clips/d3-233.mp3
+9,d4,"AUXILIARIES - AFTER-PERFECT",,"No <b>he's just after one</b>.",,71
+8,d23,"AUXILIARIES - AUXILIARY DOUBLING",,"If I <b>had've</b> seen her I would have waved.",,82
+8,d5,"AUXILIARIES - AUXILIARY DOUBLING",," He <b>might've</b> no <b>have</b> left yet.",,72
+8,d7,"AUXILIARIES - AUXILIARY DOUBLING",,"What <b>should've</b> he <b>have</b> bought instead?",,73
+8,d8,"AUXILIARIES - AUXILIARY DOUBLING",,"What <b>should've</b> we said to them?",,74
+44,d1,"AUXILIARIES - BE-PERFECT",,"<b>I'm no been</b> there in a while.",,69,"https://scotssyntaxatlas.ac.uk/feature-sound-clips/d1-37.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/d1-38.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/d1-234.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/d1-235.mp3"
+44,D35,"AUXILIARIES - BE-PERFECT",,"<b>We're had</b> our lunch already.",,179
+44,D36,"AUXILIARIES - BE-PERFECT",,"<b>I'm been</b> there twice since April.",,185
+42,j10,"AUXILIARIES - DOUBLE MODALS",,"You <b>used to could</b> get the papers at the shop on the corner.",,193
+42,j14,"AUXILIARIES - DOUBLE MODALS",,"<b>Will</b> you <b>can</b> meet me at six?",,194
+42,j2,"AUXILIARIES - DOUBLE MODALS",,"He <b>might can</b> help you next week.",,257,https://scotssyntaxatlas.ac.uk/feature-sound-clips/j2-236.mp3
+42,j20,"AUXILIARIES - DOUBLE MODALS",,"Why <b>would</b> I <b>might</b> know him?",,115
+42,j3,"AUXILIARIES - DOUBLE MODALS",,"They <b>must could</b> see us at some point.",,204
+42,j4,"AUXILIARIES - DOUBLE MODALS",,"He <b>must can</b> swim, I see him at the pool all the time.",,205
+42,j7,"AUXILIARIES - DOUBLE MODALS",,"<b>He'll can</b> do it next week.",,197
+6,d11,"AUXILIARIES - ZERO AUXILIARIES",," I <b>would rather made</b> dinner myself.",,76
+6,d12,"AUXILIARIES - ZERO AUXILIARIES",,"I <b>would only been</b> about two at the time.",,77
+6,d14,"AUXILIARIES - ZERO AUXILIARIES",,"<b>There been</b> a lot of rain this week.",,78
+6,d15,"AUXILIARIES - ZERO AUXILIARIES",,"He was <b>seen taken</b> away by the police.",,79
+6,d25,"AUXILIARIES - ZERO AUXILIARIES",,"I think <b>there a man</b> outside.",,75
+13,i3,"COMP - CONJUNCTIONS",,"They bought a house, <b>and</b> him no even in work at the time!",,113
+13,o36,"COMP - CONJUNCTIONS",,"He was smaller <b>nor</b> I expected.",,155
+13,p1,"COMP - CONJUNCTIONS",,"He's a nice guy <b>but</b>.",,160,"https://scotssyntaxatlas.ac.uk/feature-sound-clips/p1-182.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/p1-201.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/p1-202.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/p1-203.mp3"
+16,j21,"COMP - FOR TO INFINITIVES",,"I'll put the heater on <b>for to</b> dry your jacket.",,116,"https://scotssyntaxatlas.ac.uk/feature-sound-clips/j21-187.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/j21-188.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/j21-189.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/j21-190.mp3"
+16,j22,"COMP - FOR TO INFINITIVES",,"You're no allowed <b>for to</b> park on the main road.",,195
+16,j23,"COMP - FOR TO INFINITIVES",,"I've got a new phone <b>for to</b> play with.",,196
+59,t1,"COMP - OTHER",,"<b>See him</b> next door, I can't stand him.",,201
+22,o30,"COMP - RELATIVE CLAUSES",," I met Jim Smith, <b>that</b> comes fae Inverness, the other day.",,153
+22,o40,"COMP - RELATIVE CLAUSES",,"That's <b>the guy bumped</b> into me earlier.",,156
+47,k1,"HAVE-RAISING - ADVERBS",,"He <b>had aie</b> a dram in him.",,198
+47,k3,"HAVE-RAISING - ADVERBS",,"We <b>had just</b> on our jerseys as well.",,263
+46,c10,"HAVE-RAISING - CONTRACTION",,"<b>I've a copy</b> of that at home.",,66
+46,c11,"HAVE-RAISING - CONTRACTION",,"<b>I've the film</b> you're talking about at home.",,67
+46,c12,"HAVE-RAISING - CONTRACTION",,"<b>I've that photo</b> on my wall now.",,68
+46,c13,"HAVE-RAISING - CONTRACTION",,"<b>We've a copy</b> of that at home.",,181
+45,c4,"HAVE-RAISING - NEGATION",,"I <b>haven't to</b> go back until September.",,60
+45,c5,"HAVE-RAISING - NEGATION",,"I <b>haven't any</b> money on me.",,61,"https://scotssyntaxatlas.ac.uk/feature-sound-clips/c5-96.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/c5-97.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/c5-98.mp3"
+45,c6,"HAVE-RAISING - NEGATION",,"I <b>haven't that</b> one with me.",,62
+45,c7,"HAVE-RAISING - NEGATION",,"We <b>hadn't a lot of rain</b> last week.",,63
+45,c9,"HAVE-RAISING - NEGATION",,"I <b>haven't steak</b> that often.",,65
+29,c1,"HAVE-RAISING - QUESTIONS",,"<b>Have you one</b> of these as well?",,57
+29,c2,"HAVE-RAISING - QUESTIONS",,"<b>Have you any</b> money for the meter?",,58,"https://scotssyntaxatlas.ac.uk/feature-sound-clips/c2-99.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/c2-100.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/c2-101.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/c2-102.mp3"
+29,c3,"HAVE-RAISING - QUESTIONS",,"<b>Have you that</b> charger with you?",,59
+29,c8,"HAVE-RAISING - QUESTIONS",,"<b>Had we a lot</b> of snow last Christmas?",,64
+14,h1,IMPERATIVES,,"<b>Gonnae</b> turn the volume down!",,188,https://scotssyntaxatlas.ac.uk/feature-sound-clips/h1-25.mp3
+14,h10,IMPERATIVES,,"<b>Mere you</b> over here and let us see it!",,108
+14,h11,IMPERATIVES,,"<b>Get that watched</b>, it's brilliant.",,109
+14,h14,IMPERATIVES,,"<b>Calm you down</b>, it's no that bad.",,110
+14,h2,IMPERATIVES,,"<b>Gonnae you</b> leave us alone!",,261
+14,h4,IMPERATIVES,,"<b>Wantae you</b> leave me alone!",,191
+14,h6,IMPERATIVES,,"<b>Come away you</b> over here and I'll fix your shoes.",,279
+14,h8,IMPERATIVES,,"<b>Away you</b> over there and behave!",,106
+14,h9,IMPERATIVES,,"<b>Mon you</b> over here for a photo!",,107
+20,o1,"INVERSION - EMBEDDED INVERSION",,"I asked <b>was he here</b> for long.",,147
+20,o2,"INVERSION - EMBEDDED INVERSION",," I'm trying to remember <b>where did I leave</b> my keys.",,232
+20,o42,"INVERSION - EMBEDDED INVERSION",," I asked <b>is he here</b> for long.",,157
+20,o43,"INVERSION - EMBEDDED INVERSION",,"I don't remember <b>what did I get</b> last time.",,158
+20,o44,"INVERSION - EMBEDDED INVERSION",,"I don't remember <b>what one did I get</b> last time.",,159
+5,h7,"INVERSION - VERB RAISING",,"<b>Go you</b> over there!",,192
+5,o3,"INVERSION - VERB RAISING",,"<b>Take you</b> a peerie sweetie.",,229
+5,o45,"INVERSION - VERB RAISING",,"<b>Where bides she</b> now?",,224
+5,o46,"INVERSION - VERB RAISING",,"<b>When goes she</b> away again?",,233
+5,o49,"INVERSION - VERB RAISING",,"<b>Say they</b> we should bring wine?",,236
+49,d22,"LOCATIVE DISCOVERY EXPRESSIONS - DOUBLING",,"<b>There it's there!</b>",,81,https://scotssyntaxatlas.ac.uk/feature-sound-clips/d22-237.mp3
+49,d26,"LOCATIVE DISCOVERY EXPRESSIONS - DOUBLING",,"<b>Here it's here</b>!",,83
+49,d28,"LOCATIVE DISCOVERY EXPRESSIONS - DOUBLING",,"<b>Here I'm here</b>!",,173
+49,d29,"LOCATIVE DISCOVERY EXPRESSIONS - DOUBLING",,"<b>There I'm there</b>!",,174
+50,d31,"LOCATIVE DISCOVERY EXPRESSIONS - INVERTED",,"<b>There's it</b>!",,176
+50,d32,"LOCATIVE DISCOVERY EXPRESSIONS - INVERTED",,"<b>There's him</b>!",,177
+50,d33,"LOCATIVE DISCOVERY EXPRESSIONS - INVERTED",,"<b>There's them</b>!",,178
+7,d19,"LOCATIVE DISCOVERY EXPRESSIONS - MINIMAL",,"<b>Here it's</b>!",,256
+7,d21,"LOCATIVE DISCOVERY EXPRESSIONS - MINIMAL",,"<b>There it's</b>!",,171
+7,d27,"LOCATIVE DISCOVERY EXPRESSIONS - MINIMAL",,"<b>There I'm</b>!",,172
+7,d30,"LOCATIVE DISCOVERY EXPRESSIONS - MINIMAL",,"<b>Here I'm</b>!",,175
+23,q38,"NOMINALS - DEMONSTRATIVES",," Take a look at <b>this photos</b> and tell us what one's the best.",,265,"https://scotssyntaxatlas.ac.uk/feature-sound-clips/q38-16.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/q38-238.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/q38-239.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/q38-240.mp3"
+23,q40,"NOMINALS - DEMONSTRATIVES",," I've got <b>they shoes</b> as well.",,266,"https://scotssyntaxatlas.ac.uk/feature-sound-clips/q40-241.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/q40-242.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/q40-243.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/q40-244.mp3"
+23,q41,"NOMINALS - DEMONSTRATIVES",," I like <b>them books</b>.",,251
+23,q42,"NOMINALS - DEMONSTRATIVES",,"<b>Yon tree</b>'s grown a lot.",,267,"https://scotssyntaxatlas.ac.uk/feature-sound-clips/q42-174.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/q42-175.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/q42-176.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/q42-177.mp3"
+23,q43,"NOMINALS - DEMONSTRATIVES",,"<b>Thon tree</b>'s grown a lot.",,268,"https://scotssyntaxatlas.ac.uk/feature-sound-clips/q43-170.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/q43-171.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/q43-172.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/q43-173.mp3"
+23,q44,"NOMINALS - DEMONSTRATIVES",,"<b>Yon boys</b> are always out playing football.",,287
+26,q46,"NOMINALS - DETERMINERS","control examples"," I've got <b>the cold</b> again.",,288
+26,q7,"NOMINALS - DETERMINERS","control examples","He has to go to <b>the hospital</b>.",,163,"https://scotssyntaxatlas.ac.uk/feature-sound-clips/q7-208.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/q7-209.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/q7-210.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/q7-212.mp3"
+26,q8,"NOMINALS - DETERMINERS","control examples","I'm going to <b>my bed</b>.",,164,"https://scotssyntaxatlas.ac.uk/feature-sound-clips/q8-206.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/q8-217.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/q8-218.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/q8-245.mp3"
+26,q9,"NOMINALS - DETERMINERS","control examples","I've had <b>my dinner</b> already.",,165,"https://scotssyntaxatlas.ac.uk/feature-sound-clips/q9-213.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/q9-214.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/q9-215.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/q9-216.mp3"
+17,m1,"NOMINALS - IRREGULAR PLURALS",," He got something in his <b>een</b>!",,117,"https://scotssyntaxatlas.ac.uk/feature-sound-clips/m1-107.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/m1-108.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/m1-109.mp3"
+17,m2,"NOMINALS - IRREGULAR PLURALS",," You have to take off your <b>sheen</b> at the door.",,118,"https://scotssyntaxatlas.ac.uk/feature-sound-clips/m2-130.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/m2-131.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/m2-132.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/m2-133.mp3"
+55,q18,"NOMINALS - ONE",,"I got <b>a big yin</b> so we can share.",,247
+55,q23,"NOMINALS - ONE",," I liked <b>the yin</b> with Jack Nicholson.",,249
+30,q16,"NOMINALS - PRONOUNS",,"I'm off to meet <b>himself</b> later.",,245
+30,q17,"NOMINALS - PRONOUNS",,"So apparently <b>himself</b> is joining us for dinner.",,246,https://scotssyntaxatlas.ac.uk/feature-sound-clips/q17-249.mp3
+30,q2,"NOMINALS - PRONOUNS",,"I havnae met <b>any other body</b> from school in ages.",,248
+30,q28,"NOMINALS - PRONOUNS",,"We'll take <b>wir</b> brollies just in case.",,284
+30,q29,"NOMINALS - PRONOUNS",,"<b>Wir</b> brollies were useless in that wind.",,270
+30,q30,"NOMINALS - PRONOUNS",,"I saw <b>youse</b> from across the street earlier but you didnae see me.",,242,"https://scotssyntaxatlas.ac.uk/feature-sound-clips/q30-57.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/q30-60.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/q30-250.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/q30-251.mp3"
+30,q32,"NOMINALS - PRONOUNS",,"Did <b>ee</b> like it at all?",,285
+30,q35,"NOMINALS - PRONOUNS",,"He looked at <b>hisself</b> in the mirror a lot.",,293,"https://scotssyntaxatlas.ac.uk/feature-sound-clips/q35-166.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/q35-167.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/q35-168.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/q35-169.mp3"
+30,q36,"NOMINALS - PRONOUNS",,"They're always feeling sorry for <b>theirselves</b>.",,294,"https://scotssyntaxatlas.ac.uk/feature-sound-clips/q36-180.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/q36-181.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/q36-220.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/q36-221.mp3"
+3,b14,"PARTICIPLES - IRREGULAR PERFECT",,"Hurry up, I've <b>putten</b> your dinner out.",,47
+3,b5,"PARTICIPLES - IRREGULAR PERFECT",,"I would've <b>came</b> along just for the cakes!",,41
+3,b6,"PARTICIPLES - IRREGULAR PERFECT",,"They've <b>went</b> home already",,42
+3,b7,"PARTICIPLES - IRREGULAR PERFECT",,"The waiter has <b>forgot</b> about us.",,43
+43,b1,"PARTICIPLES - IRREGULAR PRETERITE",,"I <b>seen</b> that last week aye.",,38,"https://scotssyntaxatlas.ac.uk/feature-sound-clips/b1-82.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/b1-83.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/b1-84.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/b1-85.mp3"
+43,b10,"PARTICIPLES - IRREGULAR PRETERITE",,"He <b>jamp</b> in after it!",,46
+43,b15,"PARTICIPLES - IRREGULAR PRETERITE",,"They <b>telt</b> me to call back later.",,48
+43,b16,"PARTICIPLES - IRREGULAR PRETERITE",,"I <b>selt</b> it ages ago.",,49
+43,b17,"PARTICIPLES - IRREGULAR PRETERITE",,"I <b>gied</b> him a wee present last year.",,50
+43,b18,"PARTICIPLES - IRREGULAR PRETERITE",,"He <b>teached</b> his dog how to shut the door.",,51
+43,b19,"PARTICIPLES - IRREGULAR PRETERITE",,"He <b>catched</b> a cold the other day.",,52
+43,b2,"PARTICIPLES - IRREGULAR PRETERITE",,"I <b>done</b> that the other day.",,39,"https://scotssyntaxatlas.ac.uk/feature-sound-clips/b2-78.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/b2-252.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/b2-253.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/b2-254.mp3"
+43,b20,"PARTICIPLES - IRREGULAR PRETERITE",," He <b>come</b> by the other day.",,53
+43,b21,"PARTICIPLES - IRREGULAR PRETERITE",,"He <b>swum</b> the Channel for Children in Need.",,54
+43,b4,"PARTICIPLES - IRREGULAR PRETERITE",,"Somebody <b>sung</b> that at the karaoke last week.",,40
+43,b8,"PARTICIPLES - IRREGULAR PRETERITE",,"That one <b>costit</b> me a tenner.",,44
+43,b9,"PARTICIPLES - IRREGULAR PRETERITE",,"I <b>hut</b> my head on the shelf.",,45
+2,a39,"PARTICIPLES - PROGRESSIVE STATIVES",,"<b>I'm wanting</b> to be at the station for one.",,22,"https://scotssyntaxatlas.ac.uk/feature-sound-clips/a39-223.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/a39-255.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/a39-256.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/a39-257.mp3"
+2,a40,"PARTICIPLES - PROGRESSIVE STATIVES",,"<b>I'm needing</b> a cup of tea after that.",,258,"https://scotssyntaxatlas.ac.uk/feature-sound-clips/a40-30.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/a40-258.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/a40-259.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/a40-260.mp3"
+2,a41,"PARTICIPLES - PROGRESSIVE STATIVES",,"<b>I'm thinking</b> he'll be late in this weather.",,24,"https://scotssyntaxatlas.ac.uk/feature-sound-clips/a41-153.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/a41-154.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/a41-155.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/a41-156.mp3"
+2,a42,"PARTICIPLES - PROGRESSIVE STATIVES",,"<b>I'm doubting</b> it'll be a problem.",,25
+2,a43,"PARTICIPLES - PROGRESSIVE STATIVES",,"<b>I'm forgetting</b> that you don't have milk in your tea.",,26
+2,a44,"PARTICIPLES - PROGRESSIVE STATIVES",,"<b>I'm forgetting</b> your name.",,27
+2,a46,"PARTICIPLES - PROGRESSIVE STATIVES",,"<b>Are you minding</b> that we're going out tonight?",,28,"https://scotssyntaxatlas.ac.uk/feature-sound-clips/a46-143.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/a46-144.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/a46-145.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/a46-146.mp3"
+2,a47,"PARTICIPLES - PROGRESSIVE STATIVES",,"<b>Are you remembering</b> where we're parked?",,29
+2,a49,"PARTICIPLES - PROGRESSIVE STATIVES",,"<b>I'm no understanding</b> what you're saying.",,30
+2,a50,"PARTICIPLES - PROGRESSIVE STATIVES",,"<b>I'm liking</b> your new haircut.",,31
+2,A51,"PARTICIPLES - PROGRESSIVE STATIVES",,"<b>I'm loving</b> your new jacket.",,32
+2,A52,"PARTICIPLES - PROGRESSIVE STATIVES",,"<b>I'm hearing</b> you're home this weekend.",,33
+2,A53,"PARTICIPLES - PROGRESSIVE STATIVES",,"<b>I'm no intending</b> to leave until ten o'clock.",,34
+2,A54,"PARTICIPLES - PROGRESSIVE STATIVES",,"<b>I'm no caring</b> how daft it looks.",,35,"https://scotssyntaxatlas.ac.uk/feature-sound-clips/A54-44.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/A54-45.mp3"
+2,A55,"PARTICIPLES - PROGRESSIVE STATIVES",,"<b>I'm knowing</b> how to get there.",,36
+2,a56,"PARTICIPLES - PROGRESSIVE STATIVES",,"<b>I'm seeing</b> you've got a new car.",,37
+41,n30,"POLARITY - AMN'T",," I <b>amn't</b> ready!",,254
+41,n31,"POLARITY - AMN'T",,"I'm coming with you, <b>amn't</b> I?",,255
+28,s1,"POLARITY - ELLIPSIS",,"<b>So he is</b>.",,253,"https://scotssyntaxatlas.ac.uk/feature-sound-clips/s1-91.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/s1-92.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/s1-94.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/s1-95.mp3"
+28,s2,"POLARITY - ELLIPSIS",,"<b>Neither he is</b>, I'm thinking of someone else.",,290
+28,s3,"POLARITY - ELLIPSIS",,"It's a lovely day, <b>so it is</b>.",,269,"https://scotssyntaxatlas.ac.uk/feature-sound-clips/s3-86.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/s3-88.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/s3-261.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/s3-262.mp3"
+28,s4,"POLARITY - ELLIPSIS",,"It's no a very nice day, <b>neither it is</b>.",,241
+56,d16,"POLARITY - EMPHATIC POLARITY",,"I <b>div</b> like a scone!",,80,"https://scotssyntaxatlas.ac.uk/feature-sound-clips/d16-263.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/d16-264.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/d16-265.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/d16-266.mp3"
+56,n11,"POLARITY - EMPHATIC POLARITY",,"Naw I'm <b>arnae</b>!",,199
+56,u1,"POLARITY - EMPHATIC POLARITY",,"Aye <b>he can that</b>.",,291
+56,u3,"POLARITY - EMPHATIC POLARITY",,"Aye <b>he will that</b>.",,243
+39,n20,"POLARITY - INT",,"She's coming for dinner next week, <b>int she</b>?",,129,"https://scotssyntaxatlas.ac.uk/feature-sound-clips/n20-111.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/n20-112.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/n20-113.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/n20-138.mp3"
+39,n21,"POLARITY - INT",,"She gets a paper every morning, <b>dint she</b>?",,130,"https://scotssyntaxatlas.ac.uk/feature-sound-clips/n21-114.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/n21-115.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/n21-116.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/n21-117.mp3"
+39,n22,"POLARITY - INT",," She was there early, <b>wint she</b>?",,131,"https://scotssyntaxatlas.ac.uk/feature-sound-clips/n22-134.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/n22-135.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/n22-136.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/n22-137.mp3"
+39,n23,"POLARITY - INT",,"She's been there before, <b>hint she</b>?",,132,"https://scotssyntaxatlas.ac.uk/feature-sound-clips/n23-267.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/n23-268.mp3"
+39,n26,"POLARITY - INT",,"<b>Hint she</b> been there before?",,133
+39,n28,"POLARITY - INT",,"<b>Wint she</b> here earlier?",,134
+39,n34,"POLARITY - INT",,"<b>Wint it</b> just a lovely day!",,137
+39,n38,"POLARITY - INT",,"There's nothing like a cup of tea, <b>int there no</b>?",,138
+40,D39,"POLARITY - NAE",,"<b>I'dnae</b> seen her for years.",,274
+40,D40,"POLARITY - NAE",,"<b>I'venae</b> been there before.",,275
+40,D41,"POLARITY - NAE",,"<b>We'renae</b> going to catch it now.",,276
+40,n10,"POLARITY - NAE",,"He <b>willnae</b> be bothered.",,125,"https://scotssyntaxatlas.ac.uk/feature-sound-clips/n10-120.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/n10-121.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/n10-122.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/n10-123.mp3"
+40,n12,"POLARITY - NAE",,"I <b>amnae</b> ready.",,126,https://scotssyntaxatlas.ac.uk/feature-sound-clips/n12-125.mp3
+40,n15,"POLARITY - NAE",,"<b>Arnae</b> you fed up of moving about?",,127
+40,n18,"POLARITY - NAE",,"<b>Willnae</b> he be angry?",,128
+40,n19,"POLARITY - NAE",,"<b>Dinnae</b> we get a shot?",,207
+40,n4,"POLARITY - NAE",,"Brian <b>isnae</b> like that.",,120
+40,n5,"POLARITY - NAE",,"He <b>wisnae</b> there.",,121
+40,N53,"POLARITY - NAE",,"<b>Cannae</b> I get a shot?",,219
+40,n57,"POLARITY - NAE",,"I <b>dunnoo</b> like coffee.",,217
+40,n58,"POLARITY - NAE",,"Brian <b>isnoo</b> like that.",,218
+40,n6,"POLARITY - NAE",,"I <b>dinnae</b> like coffee.",,122,"https://scotssyntaxatlas.ac.uk/feature-sound-clips/n6-139.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/n6-140.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/n6-141.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/n6-142.mp3"
+40,N60,"POLARITY - NAE",,"He <b>winna</b> be bothered.",,187,"https://scotssyntaxatlas.ac.uk/feature-sound-clips/N60-147.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/N60-148.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/N60-149.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/N60-150.mp3"
+40,n7,"POLARITY - NAE",," I <b>didnae</b> like it at all.",,123,"https://scotssyntaxatlas.ac.uk/feature-sound-clips/n7-26.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/n7-27.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/n7-269.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/n7-270.mp3"
+40,n8,"POLARITY - NAE",,"I <b>havnae</b> been there before.",,124,"https://scotssyntaxatlas.ac.uk/feature-sound-clips/n8-162.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/n8-163.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/n8-164.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/n8-165.mp3"
+19,n39,"POLARITY - NEGATIVE CONCORD",,"I <b>cannae</b> see <b>nothing</b>.",,139,"https://scotssyntaxatlas.ac.uk/feature-sound-clips/n39-67.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/n39-68.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/n39-69.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/n39-70.mp3"
+19,n40,"POLARITY - NEGATIVE CONCORD",," I <b>cannae</b> see <b>nothing naewhere</b>.",,211
+19,n41,"POLARITY - NEGATIVE CONCORD",,"I <b>didnae</b> see it <b>naewhere</b>.",,140,https://scotssyntaxatlas.ac.uk/feature-sound-clips/n41-219.mp3
+19,n42,"POLARITY - NEGATIVE CONCORD",,"There <b>wisnae naebody</b> outside.",,141
+19,n43,"POLARITY - NEGATIVE CONCORD",,"There <b>wisnae naebody naewhere</b>.",,142,https://scotssyntaxatlas.ac.uk/feature-sound-clips/n43-227.mp3
+19,n44,"POLARITY - NEGATIVE CONCORD",,"There <b>wisnae naebody</b> anywhere.",,143
+19,n45,"POLARITY - NEGATIVE CONCORD",,"There <b>wisnae</b> anybody <b>naewhere</b>.",,144
+19,n46,"POLARITY - NEGATIVE CONCORD",," I <b>didnae</b> see <b>nae</b> shoes.",,145
+19,n47,"POLARITY - NEGATIVE CONCORD",,"I <b>didnae</b> see <b>nothing</b> like that.",,146
+19,n48,"POLARITY - NEGATIVE CONCORD",,"They'll <b>no</b> have <b>nothing</b> like that.",,220
+19,n49,"POLARITY - NEGATIVE CONCORD",," They <b>don't</b> sell <b>nothing</b> like that.",,221
+19,n50,"POLARITY - NEGATIVE CONCORD",," I <b>hardly</b> bought <b>nothing</b>.",,212
+19,n51,"POLARITY - NEGATIVE CONCORD",,"He <b>doesnae</b> stay here <b>no more</b>.",,213
+19,n52,"POLARITY - NEGATIVE CONCORD",,"<b>None</b> of the singers was <b>nae</b> good!",,214
+57,n1,"POLARITY - NEVER",," I <b>never</b> saw you.",,119,"https://scotssyntaxatlas.ac.uk/feature-sound-clips/n1-126.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/n1-127.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/n1-128.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/n1-129.mp3"
+57,n2,"POLARITY - NEVER",,"He's <b>never</b> out his bed yet.",,280
+18,n37,"POLARITY - OTHER",," I <b>cannae no</b> see them.",,210
+18,s8,"POLARITY - OTHER",,"We were stuck in traffic for ages, <b>were we</b>?",,292
+58,d10,"POLARITY - Ø ELEMENTS",,"I <b>na</b> been there before.",,250
+58,d18,"POLARITY - Ø ELEMENTS",,"I <b>daa</b> ken.",,180,"https://scotssyntaxatlas.ac.uk/feature-sound-clips/d18-157.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/d18-158.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/d18-159.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/d18-160.mp3"
+58,D38,"POLARITY - Ø ELEMENTS",,"I <b>caa</b> mind his name.",,273
+58,d9,"POLARITY - Ø ELEMENTS",,"I <b>na</b> want to be late.",,252,"https://scotssyntaxatlas.ac.uk/feature-sound-clips/d9-191.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/d9-192.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/d9-194.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/d9-195.mp3"
+12,g10,PREPOSITIONS,,"Turn on the telly <b>til</b> we hear the news.",,104
+12,g12,PREPOSITIONS,,"His dad <b>was</b> Govan as well.",,105
+12,g15,PREPOSITIONS,,"I got that one <b>off of</b> my pal.",,101
+12,g4,PREPOSITIONS,,"Do you have anything to <b>wipe up that</b> with?",,97
+12,g5,PREPOSITIONS,,"Nearly all of them were closed <b>with</b> the council.",,98
+12,g6,PREPOSITIONS,,"We were all petrified <b>fae</b> him.",,99
+12,g7,PREPOSITIONS,,"I got that one <b>off</b> my pal.",,100
+12,g8,PREPOSITIONS,,"They'll be finished <b>or</b> that time.",,102
+12,g9,PREPOSITIONS,,"I said <b>til</b> her I'd see her later on.",,103
+12,q10,PREPOSITIONS,," I'll have a <b>wee drop soup</b>.",,166
+25,h13,"QUESTIONS - EH TAGS",,"Put it down there <b>eh</b>!",,189,https://scotssyntaxatlas.ac.uk/feature-sound-clips/h13-43.mp3
+25,o13,"QUESTIONS - EH TAGS",,"You have milk in your tea, <b>eh</b>?",,222,"https://scotssyntaxatlas.ac.uk/feature-sound-clips/o13-39.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/o13-40.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/o13-41.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/o13-271.mp3"
+25,o15,"QUESTIONS - EH TAGS",,"You've no seen the new Star Wars film, <b>eh no</b>?",,225
+25,o16,"QUESTIONS - EH TAGS",,"Naebody liked that one, <b>eh no</b>?",,226
+25,o17,"QUESTIONS - EH TAGS",,"<b>Eh</b> you're leaving?",,227
+25,o18,"QUESTIONS - EH TAGS",,"<b>Eh you're no</b> ready to leave?",,228
+48,o41,"QUESTIONS - SURE",,"<b>Sure</b> Jim's fae Inverness?",,231
+21,o10,"QUESTIONS - WH-QUESTIONS",,"<b>How</b> do you think that?",,209
+21,o11,"QUESTIONS - WH-QUESTIONS",,"<b>How</b> do you think he's doing that?",,149
+21,o12,"QUESTIONS - WH-QUESTIONS",,"What <b>did you get all</b> for Christmas?",,206
+21,o19,"QUESTIONS - WH-QUESTIONS",,"<b>What like</b> was the weather?",,260,"https://scotssyntaxatlas.ac.uk/feature-sound-clips/o19-103.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/o19-104.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/o19-105.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/o19-106.mp3"
+21,o20,"QUESTIONS - WH-QUESTIONS",,"<b>Where</b> are you <b>about</b>?",,151,https://scotssyntaxatlas.ac.uk/feature-sound-clips/o20-196.mp3
+21,o24,"QUESTIONS - WH-QUESTIONS",,"She told me <b>what fine</b> these pies were, and where you could get them.",,223
+21,o31,"QUESTIONS - WH-QUESTIONS",,"<b>Whatna</b> tea is this?",,154,"https://scotssyntaxatlas.ac.uk/feature-sound-clips/o31-161.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/o31-178.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/o31-179.mp3"
+21,o7,"QUESTIONS - WH-QUESTIONS",,"<b>How</b> can I no come in?",,148,"https://scotssyntaxatlas.ac.uk/feature-sound-clips/o7-200.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/o7-274.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/o7-275.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/o7-276.mp3"
+11,f1,"VERBS & ARGUMENTS - LIGHT VERBS",,"Could you <b>give me a loan</b> of your pen?",,90
+11,f2,"VERBS & ARGUMENTS - LIGHT VERBS",,"Have you <b>made a visit</b> to the dentists yet?",,91
+11,f3,"VERBS & ARGUMENTS - LIGHT VERBS",,"She'll no <b>give him a dance</b>!",,92
+11,f4,"VERBS & ARGUMENTS - LIGHT VERBS",," I'll <b>give him a look-in</b>.",,93
+11,f5,"VERBS & ARGUMENTS - LIGHT VERBS",,"The kettle's no <b>through the boil</b> yet.",,94
+11,f6,"VERBS & ARGUMENTS - LIGHT VERBS",,"<b>Give it a skelp</b>!",,95
+4,b23,"VERBS & ARGUMENTS - PASSIVES",,"<b>I'm finished</b> my soup now.",,55
+4,b24,"VERBS & ARGUMENTS - PASSIVES",,"<b>Are you done</b> your dinner yet?",,56
+4,e1,"VERBS & ARGUMENTS - PASSIVES",," His van <b>needs washed</b>.",,259,"https://scotssyntaxatlas.ac.uk/feature-sound-clips/e1-6.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/e1-7.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/e1-8.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/e1-9.mp3"
+4,e2,"VERBS & ARGUMENTS - PASSIVES",,"That baby <b>wants fed</b>.",,85
+4,e3,"VERBS & ARGUMENTS - PASSIVES",,"Most teddies <b>like cuddled</b>.",,86
+4,e6,"VERBS & ARGUMENTS - PASSIVES",,"Sounds like the dog <b>wants out</b>.",,89
+53,v1,"VERBS & ARGUMENTS - PROMISE CONTROL",,"<b>You promised me to be</b> here early!",,200
+15,i1,"VERBS & ARGUMENTS - THAT'S NP BEEN",,"<b>That's him been</b> sacked again.",,111
+15,i2,"VERBS & ARGUMENTS - THAT'S NP BEEN",,"<b>That's there been</b> rain every day this week.",,112
+54,r1,"VERBS & ARGUMENTS - TRANSITIVE EXPLETIVES",,"<b>There's something fallen</b> down the sink.",,286
+54,r2,"VERBS & ARGUMENTS - TRANSITIVE EXPLETIVES",,"<b>There are some other people been</b> seated already.",,289
+54,r4,"VERBS & ARGUMENTS - TRANSITIVE EXPLETIVES",,"<b>There's some idiot smashed</b> the window.",,264
+51,g1,"VERBS & ARGUMENTS - Ø VERBS",,"<b>I'll away</b> up the road.",,96,"https://scotssyntaxatlas.ac.uk/feature-sound-clips/g1-278.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/g1-279.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/g1-280.mp3,https://scotssyntaxatlas.ac.uk/feature-sound-clips/g1-281.mp3"
+51,g14,"VERBS & ARGUMENTS - Ø VERBS",,"<b>On your shoes</b>, we're going out.",,277
+51,g2,"VERBS & ARGUMENTS - Ø VERBS",,"Before I'm even finished speaking, <b>he ons his coat</b> and storms out!",,278

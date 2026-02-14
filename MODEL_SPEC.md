@@ -1,0 +1,284 @@
+# Model Specification: Grammaticality Population Dynamics ABM
+
+Version: 0.2 (2026-02-14)
+
+## 1. Generative Model
+
+### Entities
+
+- **Population**: N agents indexed i = 1, ..., N
+- **Constructions**: set K, indexed k
+- **Communities**: C communities of approximately equal size; agent i belongs to community m(i) = i mod C
+
+### State
+
+Each agent i holds a Beta-distributed belief about each construction k:
+
+    B_ik = Beta(a_ik, b_ik)
+
+with posterior mean (confidence):
+
+    c_ik = a_ik / (a_ik + b_ik)
+
+### Dynamics (per time step)
+
+For each of I interactions per step:
+
+1. **Partner selection.** Draw speaker s uniformly from the population. Draw hearer h:
+   - With probability beta: h drawn uniformly from community m(s), excluding s
+   - With probability 1 - beta: h drawn uniformly from the full population, excluding s
+
+2. **For each construction k:**
+
+   a. Context relevance: draw r ~ Bernoulli(w_k). If r = 0, skip.
+
+   b. Production: speaker produces iff c_sk > tau AND Bernoulli(c_sk) = 1. This is a two-gate model: a hard threshold (you won't produce what you doubt) followed by a stochastic gate (even confident speakers don't always use a form).
+
+   c. Update hearer beliefs:
+   - If produced: a_hk <- a_hk + 1
+   - If not produced: b_hk <- b_hk + rho
+
+That's the whole model. No other dynamics.
+
+### Initialization
+
+For each agent i, construction k:
+
+- With probability f_k: a_ik = a_k^0 + epsilon_a, b_ik = b_k^0 + |epsilon_b|, where epsilon_a ~ N(0, 0.5), epsilon_b ~ N(0, 0.3)
+- With probability 1 - f_k: a_ik = 1, b_ik = 1 (uninformative prior)
+
+With user placement: if construction k has designated user communities S_k, only agents in those communities can be initial users. The per-agent probability is scaled so the expected user count equals f_k * N.
+
+
+## 2. Parameter Table
+
+### Theory-fixed
+
+These follow from the OVMG's commitments. Changing them would mean a different model.
+
+| Parameter | Value | Justification |
+|-----------|-------|---------------|
+| Update rule | Bayesian (Beta conjugate) | OVMG core claim: grammaticality beliefs are updated by evidence accumulation |
+| Preemption exists | yes | OVMG core claim: absence-in-relevant-context is evidence of ungrammaticality |
+| Production depends on confidence | yes | Speakers don't produce forms they believe are ungrammatical |
+
+### Empirically estimable
+
+These could in principle be measured. Current values are guesses.
+
+| Parameter | Symbol | Current | Could estimate from |
+|-----------|--------|---------|---------------------|
+| Niche width | w_k | 0.02 -- 0.30 | Corpus frequency of contexts licensing construction k |
+| Initial user fraction | f_k | 0.0 -- 0.95 | Corpus attestation rates, dialect surveys |
+| Production threshold | tau | 0.5 | Psycholinguistic production studies (at what confidence do speakers produce?) |
+| Population size | N | 1000 | Sociolinguistic community size |
+| Number of communities | C | 10 | Sociolinguistic surveys, dialect geography |
+| Within-community bias | beta | 0.80 | Social network analysis (proportion of interactions with in-group) |
+
+### Free
+
+Currently arbitrary. These are the dangerous ones.
+
+| Parameter | Symbol | Current | Notes |
+|-----------|--------|---------|-------|
+| Preemption weight | rho | 0.3 | THE key free parameter. How much does not-hearing count relative to hearing? No principled value. |
+| Initial confidence (users) | a_k^0, b_k^0 | (5, 2) to (10, 1) | How confident are initial users? Affects entrenchment/inertia. |
+| Interactions per step | I | N | Normalization choice. Higher = faster dynamics, same equilibria (in theory). |
+| Individual variation | epsilon_a, epsilon_b | N(0, 0.5), N(0, 0.3) | Arbitrary noise magnitude. |
+| "Producer" reporting threshold | -- | 0.5 | Analysis choice: when we count "producers" we use conf > 0.5. Matches tau but is still a choice. |
+
+
+## 3. What the Model Does Not Include
+
+Mechanisms absent from v0.2 (any of which could matter):
+
+- **Analogical support**: no generalisation from related constructions
+- **Written/literary evidence**: agents only learn from live interaction
+- **Metalinguistic knowledge**: agents can't reason about rules
+- **Prestige/authority weighting**: all speakers count equally
+- **Frequency-dependent production**: production probability is just confidence, not modulated by register or context type
+- **Forgetting/decay**: beliefs only grow; no mechanism for belief weakening over time
+- **Generational turnover**: no birth/death of agents
+- **Construction competition**: constructions are independent; using one doesn't preempt another
+- **Variable rho**: preemption weight is global, but in reality some contexts make absence more informative than others
+
+
+## 4. Experiments and Predictions
+
+### 4.1 Baseline (completed)
+
+**Setup**: 1000 agents, random mixing, 6 constructions with different niche widths and initial user fractions.
+
+**Prediction** (post hoc, be honest): core stays high, gap dies, rare is somewhere in between. We had no specific prediction about bimodality.
+
+**Finding**: Core and established lock in. Stable gap dies fast (wide niche). Community novel dies slowly (narrow niche). Rare_licensed develops **bimodality**: community splits into accepters and rejecters. This was not predicted.
+
+**Interpretation risk**: Bimodality could be a generic property of any threshold-based production model with partial initial adoption. Needs sensitivity analysis.
+
+### 4.2 Critical mass sweep (completed)
+
+**Setup**: vary initial user fraction from 0% to 50%, niche_width = 0.10, random mixing.
+
+**Prediction** (post hoc): tipping point exists.
+
+**Finding**: tipping point around 15%. Below that, the form dies. Above, it spreads. The transition is fairly sharp.
+
+**Interpretation risk**: The 15% number is almost certainly parameter-dependent (rho, tau, niche_width all contribute). We should not cite "15%" as a finding; we should cite "tipping point exists and its location depends on [parameters]."
+
+### 4.3 Niche width sweep (completed)
+
+**Setup**: vary niche_width, no initial users, random mixing.
+
+**Prediction** (from single-agent model): wider niche = faster death (more opportunities for preemption).
+
+**Finding**: Confirmed. Clean fan-out. This is the multi-agent replication of the single-agent result from simulate_dynamics.py.
+
+**Interpretation risk**: Low. This is the most robust finding because it follows directly from the math: more opportunities * rho = faster b accumulation.
+
+### 4.4 Network clustering (completed)
+
+**Setup**: 10 communities, within_bias = 0.80, 10% initial users placed in different configurations.
+
+**Prediction** (pre-registered, stated before running): Clustering would lower the critical mass, making rare forms survive that would die under random mixing.
+
+**Finding**: **Opposite.** Random mixing spreads the form best (60% producers). Clustering concentrates it: user communities thrive (conf ~0.77), non-user communities die (conf ~0.24). The result is stable dialectal pockets, not global survival.
+
+**Interpretation risk**: Medium. The within_bias of 0.80 is arbitrary. At very high within_bias (0.95+), the communities are nearly isolated and the effect should be even stronger. At low within_bias (0.5), it should approach random mixing. Need sensitivity sweep over beta.
+
+
+## 5. Sensitivity Analysis: rho (completed 2026-02-14)
+
+### 5.1 Setup
+
+1000 agents, 300 steps, 20 MC runs per cell. rho swept over [0.05, 0.1, 0.2, 0.3, 0.5, 0.8].
+
+Pre-registered predictions (written before running):
+- Niche-speed relationship holds at all rho (mathematical)
+- Critical mass tipping point MOVES with rho
+- Analytic lower bound: f > rho / (1 + rho)
+- Dialectal pockets form at all rho under clustering
+- Bimodality: uncertain
+
+### 5.2 Results
+
+**A. rho is a gate, not a scale factor.** The heatmap (rho_sensitivity_heatmap.png) shows a clean diagonal boundary between survival and death. rho determines the minimum seed fraction:
+
+| rho | Analytic bound f > rho/(1+rho) | Observed critical mass |
+|-----|-------------------------------|----------------------|
+| 0.05 | 0.048 | ~2% |
+| 0.1 | 0.091 | ~2% |
+| 0.2 | 0.167 | ~3-5% |
+| 0.3 | 0.231 | ~8% |
+| 0.5 | 0.333 | ~25% |
+| 0.8 | 0.444 | ~50% |
+
+The analytic bound is conservative but tracks the real threshold. The actual critical mass is somewhat below the bound because the bound assumes non-users contribute zero positive evidence, but agents near the threshold sometimes produce.
+
+**Verdict on finding 3 (critical mass tipping point):** ROBUST in existence. The tipping point exists at all rho values. FRAGILE in location: the specific number (e.g., "15%") is entirely determined by rho. Never cite a critical mass number without specifying rho.
+
+**B. The clustering effect reverses sign across rho.**
+
+| rho | Random mixing | Clustered | Which wins? |
+|-----|--------------|-----------|-------------|
+| 0.05 | 100% | 98% | ~tie (both saturate) |
+| 0.1 | 100% | 93% | ~tie |
+| 0.2 | 94% | 22% | Random (+72%) |
+| 0.3 | 60% | 11% | Random (+49%) |
+| 0.5 | 2% | 10% | Clustered (+8%) |
+| 0.8 | 0% | 9% | Clustered (+9%) |
+
+At medium rho (0.2-0.3), random mixing spreads the form while clustering traps it in pockets. At high rho (0.5-0.8), both fail globally, but clustering preserves local pockets. The green bars at high rho represent the user community surviving while everyone else dies.
+
+**Verdict on finding 4 (dialectal pockets):** ROBUST. Pockets form at all rho when community structure exists. But the INTERPRETATION changes: at medium rho, pockets are a side effect of failed global spread. At high rho, pockets are the only viable survival strategy.
+
+**Verdict on finding 5 (random > clustering):** FRAGILE. Only true at medium rho. At high rho, clustering is actually better (preserves pockets). At low rho, both work.
+
+**C. Bimodality is a phase-transition marker.**
+
+Only rho = 0.3 (and marginally 0.2) show bimodal confidence distributions. At lower rho, the population converges to unanimous "grammatical." At higher rho, unanimous "ungrammatical." Bimodality appears when the system is poised near the critical mass tipping point for the given initial user fraction.
+
+**Verdict on finding 2 (bimodality):** FRAGILE as a general property. Robust as a LOCAL property: it marks the boundary between survival and death regimes. If you're studying a construction whose status is genuinely contested in a speech community, the model predicts you should see bimodal acceptability distributions.
+
+### 5.3 What survived the audit
+
+| Finding | Status | Depends on rho? |
+|---------|--------|-----------------|
+| Niche-speed relationship | **ROBUST** | No (mathematical) |
+| Critical mass exists | **ROBUST** | Location yes, existence no |
+| Dialectal pockets | **ROBUST** | No (interpretation changes) |
+| Random > clustering | **FRAGILE** | Reverses at high rho |
+| Bimodality | **FRAGILE** (general) / **ROBUST** (at tipping point) | Only near phase transition |
+
+### 5.4 Remaining sensitivity sweeps (not yet run)
+
+| Parameter | Values to test | Expected sensitivity |
+|-----------|---------------|---------------------|
+| tau | 0.3, 0.4, 0.5, 0.6, 0.7 | MEDIUM. Lower tau = more exploration. |
+| beta (within_bias) | 0.5, 0.6, 0.7, 0.8, 0.9, 0.95 | HIGH for clustering findings. |
+| N | 200, 500, 1000, 2000, 5000 | LOW expected (same dynamics, less noise). |
+| C (communities) | 5, 10, 20 | MEDIUM for clustering. |
+| Initial confidence | (3,1), (5,2), (8,2), (10,1) | MEDIUM. Affects inertia. |
+
+
+## 6. Mean-Field Analysis (completed 2026-02-14)
+
+See `models/mean_field.py` for code and derivation.
+
+### 6.1 Analytic Critical Mass
+
+For a marginal agent (confidence c = tau = 0.5), positive evidence must outweigh negative evidence for the construction to survive. The rates are:
+
+    rate_positive = w * p * c_prod
+    rate_negative = w * (1 - p * c_prod) * rho
+
+At the tipping point (rate_positive = rate_negative at c = 0.5):
+
+    p * c_prod > rho / (1 + rho)
+
+This gives two bounds:
+
+- **Lower bound** (assumes c_prod = 1): f > rho / (1 + rho)
+- **Mean-field estimate** (accounts for finite producer confidence): f > rho / (c_prod * (1 + rho))
+
+### 6.2 Comparison to Simulation
+
+| rho | Lower bound | MF (c=0.75) | MF (c=0.65) | Sim threshold | Sim prod% |
+|-----|-------------|-------------|-------------|---------------|-----------|
+| 0.05 | 0.048 | 0.063 | 0.073 | ~2% | 100% |
+| 0.10 | 0.091 | 0.121 | 0.140 | ~2% | 100% |
+| 0.20 | 0.167 | 0.222 | 0.256 | ~5% | 99% |
+| 0.30 | 0.231 | 0.308 | 0.355 | ~8% | 54% |
+| 0.50 | 0.333 | 0.444 | 0.513 | ~30% | 81% |
+| 0.80 | 0.444 | 0.593 | 0.684 | ~50% | 54% |
+
+**The simulation is consistently more forgiving than the analytic predictions.** At low rho (0.05-0.10), 2% seed users suffice where the bound predicts 5-9%. The discrepancy shrinks at high rho.
+
+### 6.3 Why the Mean-Field Misses
+
+The mean-field tracks two sub-populations (users, non-users) deterministically. In the trajectory plots, non-users monotonically decline and never cross the production threshold. This means the mean-field **misses the positive-feedback cascade**: in the stochastic ABM, a few non-users near the threshold stochastically convert to producers, which increases the production rate, which converts more non-users. This cascade is the mechanism that makes the simulation more forgiving than the analytic prediction.
+
+The mean-field also misses:
+- **Stochastic threshold crossing**: agents near c = 0.5 can flip either way in the ABM
+- **Local density effects**: even under random mixing, stochastic partner selection creates temporary local majorities
+- **Positive feedback from new producers**: each conversion amplifies the signal for remaining non-users
+
+### 6.4 Inverting the Formula
+
+The formula can be inverted to estimate rho from empirical data:
+
+    rho = f* * c_prod / (1 - f* * c_prod)
+
+If dialectal forms need ~20% community adoption to survive (f* = 0.20, c_prod = 0.70):
+
+    rho = 0.14 / 0.86 ≈ 0.16
+
+This would move rho from "free" to "empirically estimable" in the parameter table (§2). The challenge is finding empirical estimates of f* for real constructions.
+
+
+## 7. Open Questions
+
+- **Can rho be estimated empirically?** The mean-field formula gives a path: observe a real tipping point f* and invert. But we need empirical data on critical mass for real constructions. Acquisition studies (how fast do kids converge on stable gaps?) or dialect contact studies (minimum speaker fraction for a form to spread) could provide f*.
+- **Does generational turnover change equilibria?** Currently beliefs only accumulate and the system freezes. Turnover might allow forms to revive or die on longer timescales.
+- **Is there a connection to language change S-curves?** The spread of a form from seed to saturation (at rho < 0.3) looks like it should follow an S-curve. Is it logistic? What's the rate parameter?
+- **What happens at the phase boundary?** The rho = 0.3, f = 0.08 cell shows 54% producers (right at the boundary). Does this represent a stable mixed equilibrium or a bistable system that flips to 0% or 100% on longer timescales?
+- **Can we improve the mean-field?** The two-population deterministic model misses the cascade dynamics. A stochastic mean-field (Langevin equation or master equation) might capture the threshold-crossing noise that makes the ABM more forgiving.
