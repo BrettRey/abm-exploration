@@ -46,7 +46,9 @@ Evaluation metrics:
   - Number of qualifying features per replicate (if too few, method fragile)
   - Recovery diagnostic: can we distinguish adjacent rho values?
 
-PRE-REGISTERED PREDICTIONS (written before running):
+PRE-REGISTERED PREDICTIONS
+Date: 2026-02-14
+Commit: 40bc0bd192856d88664537e35e04bfa34c26459f
 ----------------------------------------------------
 
 1. POSITIVE BIAS AT LOW rho. At rho=0.2, the true critical mass is ~17%.

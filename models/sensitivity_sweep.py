@@ -16,7 +16,9 @@ Parameters:
 
 All sweeps at rho=0.5 unless noted.
 
-PRE-REGISTERED PREDICTIONS (written before running):
+PRE-REGISTERED PREDICTIONS
+Date: 2026-02-14
+Commit: 3e7262fdf867128caff66699fff7c2749d5c7926
 ----------------------------------------------------
 
 A. TAU (production threshold)

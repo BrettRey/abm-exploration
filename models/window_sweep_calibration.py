@@ -27,7 +27,9 @@ Windows to test:
   [0.10, 0.70]  (much wider)
   [0.05, 0.80]  (very wide, borderline "use everything declining")
 
-PRE-REGISTERED PREDICTIONS (written before running):
+PRE-REGISTERED PREDICTIONS
+Date: 2026-02-14
+Commit: 3e7262fdf867128caff66699fff7c2749d5c7926
 ----------------------------------------------------
 
 1. WIDER WINDOWS REDUCE THE CEILING. The ceiling comes from excluding
