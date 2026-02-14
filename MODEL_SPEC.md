@@ -275,10 +275,61 @@ If dialectal forms need ~20% community adoption to survive (f* = 0.20, c_prod = 
 This would move rho from "free" to "empirically estimable" in the parameter table (§2). The challenge is finding empirical estimates of f* for real constructions.
 
 
-## 7. Open Questions
+## 7. Empirical rho Estimation from SCOSYA Data (2026-02-14)
 
-- **Can rho be estimated empirically?** The mean-field formula gives a path: observe a real tipping point f* and invert. But we need empirical data on critical mass for real constructions. Acquisition studies (how fast do kids converge on stable gaps?) or dialect contact studies (minimum speaker fraction for a form to spread) could provide f*.
-- **Does generational turnover change equilibria?** Currently beliefs only accumulate and the system freezes. Turnover might allow forms to revive or die on longer timescales.
+### Data source
+
+Scots Syntax Atlas (SCOSYA): 258 syntactic features, 146 locations, ~104,000 individual ratings on a 1-5 Likert scale (1=reject, 5=fully accept), stratified by age group (2 young, 2 old per location). Downloaded from HTML tabular data pages (the API was blocked by SiteGround anti-bot protection).
+
+### Method
+
+Identified features **actively declining in apparent time** (young speakers accept less than old speakers) with young acceptance rates in the 20-50% range (near the tipping point). For these features, f_young approximates the critical mass f*, and rho ≈ f*/(1-f*).
+
+### Results
+
+Using >= 4 as the acceptance threshold (maps best to the ABM's binary "accept"):
+
+| Feature | Stimulus | f_young | rho estimate |
+|---------|----------|---------|-------------|
+| n47 | "didnae see nothing" | 0.32 | 0.46 |
+| b17 | "I gied him" | 0.32 | 0.47 |
+| A58 | "They was" | 0.33 | 0.50 |
+| c7 | "We hadn't a lot of rain" | 0.34 | 0.51 |
+| u3 | "he will that" | 0.35 | 0.53 |
+| h8 | "Away you over there" | 0.35 | 0.53 |
+| A59 | "shops was quiet" | 0.38 | 0.61 |
+
+**Median rho ≈ 0.5, IQR 0.50-0.58.**
+
+Threshold sensitivity: >= 3 gives rho ≈ 1.0; >= 4 gives rho ≈ 0.5. The result is threshold-dependent by a factor of ~2.
+
+### Interpretation
+
+At rho = 0.5, the critical mass for survival is f* = rho/(1+rho) = 0.33 (33% of the community must accept the construction for it to survive). This is consistent with:
+
+- The ABM's default rho = 0.3 being in the right order of magnitude
+- The SCOSYA features showing dialectal pockets (geographic SD up to 1.44) consistent with clustering effects
+- Strong preemption: absence of a form in ~1/3 of relevant contexts is enough evidence to push toward rejection
+
+### Caveats
+
+1. **Apparent time ≠ real time.** Age-grading could confound the apparent-time interpretation.
+2. **Threshold-sensitive.** The >= 4 vs >= 3 choice shifts the estimate by ~2x.
+3. **Sample selection.** SCOSYA features were chosen for variability, so the distribution of acceptance rates is biased toward the middle.
+4. **Gradient vs binary.** The ABM models binary accept/reject; Likert 1-5 is gradient.
+5. **f_young ≈ f* assumes features are near the tipping point**, not already in free-fall. Features well below f* give rho estimates that are lower bounds.
+
+### Additional findings
+
+- **Age stratification reveals spreading features**: "I'm liking" (+56%), "I'm loving" (+47%), "They've went" (+36%), "I done that" (+31%). These are features young Scots speakers are adopting.
+- **Dying features**: "had just on" (-52%), "Where bides she" (-27%), "I'll away" (-30%). Traditional Scots features older speakers accept but younger ones reject.
+- **Geographic variation**: highest for "I caa mind" (SD=1.44), "There it's!" (SD=1.40), traditional Scots verb forms (SD=1.35-1.39). Lowest for universally accepted items like "I'm going to my bed" (SD=0.53).
+
+## 8. Open Questions
+
+- ~~Can rho be estimated empirically?~~ **Partially answered.** SCOSYA data suggests rho ≈ 0.5 (threshold-dependent, apparent-time estimate). Needs validation against real-time longitudinal data.
+- **Does generational turnover change equilibria?** Currently beliefs only accumulate and the system freezes. Turnover might allow forms to revive or die on longer timescales. The SCOSYA age-stratification data could test this directly.
 - **Is there a connection to language change S-curves?** The spread of a form from seed to saturation (at rho < 0.3) looks like it should follow an S-curve. Is it logistic? What's the rate parameter?
 - **What happens at the phase boundary?** The rho = 0.3, f = 0.08 cell shows 54% producers (right at the boundary). Does this represent a stable mixed equilibrium or a bistable system that flips to 0% or 100% on longer timescales?
 - **Can we improve the mean-field?** The two-population deterministic model misses the cascade dynamics. A stochastic mean-field (Langevin equation or master equation) might capture the threshold-crossing noise that makes the ABM more forgiving.
+- **Can the ABM reproduce the SCOSYA feature distribution?** Run the ABM at rho = 0.5 with features seeded at varying initial frequencies and compare the resulting distribution of acceptance rates against the observed SCOSYA distribution.

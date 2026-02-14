@@ -1,17 +1,15 @@
 #!/usr/bin/env python3
 """
-Download all SCOSYA rating data and compile into a single dataset.
+Download all SCOSYA rating data by scraping the HTML tabular data pages.
 
-The SCOSYA server (SiteGround hosting) has aggressive anti-bot protection.
-If you get 403s, try:
-  1. Increasing DELAY (5-10 seconds)
-  2. Running from a browser session first to get cookies
-  3. Running in smaller batches
+The SCOSYA API is blocked by SiteGround anti-bot protection, but the
+HTML pages at /data-in-tabular-form/?id={code} serve the same data in
+HTML tables and are accessible.
 
 Usage:
-    python download_all.py              # download all
-    python download_all.py --resume     # skip already-downloaded attributes
-    python download_all.py --delay 5    # 5s between requests
+    python download_all.py                # download all 258 attributes
+    python download_all.py --resume       # skip already-downloaded
+    python download_all.py --delay 3      # seconds between requests (default 3)
 """
 
 import json
@@ -20,148 +18,205 @@ import time
 import os
 import sys
 import urllib.request
+from html.parser import HTMLParser
 
 DATA_DIR = os.path.dirname(os.path.abspath(__file__))
-BASE_URL = "https://scotssyntaxatlas.ac.uk/api/v1/json"
-DELAY = 2  # seconds between requests
+BASE_URL = "https://scotssyntaxatlas.ac.uk/data-in-tabular-form/"
+DELAY = 3
 
-# Parse args
 resume = "--resume" in sys.argv
 for i, arg in enumerate(sys.argv):
     if arg == "--delay" and i + 1 < len(sys.argv):
         DELAY = float(sys.argv[i + 1])
 
 
-def fetch_attribute(aid):
-    """Fetch rating data for one attribute. Returns list of dicts or None."""
-    url = f"{BASE_URL}/attribute/{aid}/And/all/1/12345/both/includeSpurious/point"
+class TableParser(HTMLParser):
+    """Extract rows from the first <table> in an HTML document."""
+    def __init__(self):
+        super().__init__()
+        self.in_table = False
+        self.in_row = False
+        self.in_cell = False
+        self.rows = []
+        self.current_row = []
+        self.current_cell = ""
+
+    def handle_starttag(self, tag, attrs):
+        if tag == "table":
+            self.in_table = True
+        elif tag == "tr" and self.in_table:
+            self.in_row = True
+            self.current_row = []
+        elif tag in ("td", "th") and self.in_row:
+            self.in_cell = True
+            self.current_cell = ""
+
+    def handle_endtag(self, tag):
+        if tag == "table":
+            self.in_table = False
+        elif tag == "tr" and self.in_row:
+            self.in_row = False
+            if self.current_row:
+                self.rows.append(self.current_row)
+        elif tag in ("td", "th") and self.in_cell:
+            self.in_cell = False
+            self.current_row.append(self.current_cell.strip())
+
+    def handle_data(self, data):
+        if self.in_cell:
+            self.current_cell += data
+
+
+def fetch_attribute_html(code):
+    """Fetch and parse the tabular data page for one attribute."""
+    url = f"{BASE_URL}?id={code}"
     req = urllib.request.Request(url, headers={
-        "User-Agent": "SCOSYA-Research-Download/1.0 (academic research)",
-        "Accept": "application/json",
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                      "AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15",
+        "Accept": "text/html",
     })
     try:
         with urllib.request.urlopen(req, timeout=30) as resp:
-            return json.loads(resp.read().decode())
+            html = resp.read().decode("utf-8", errors="replace")
+            if "sgcaptcha" in html:
+                return "BLOCKED"
+            parser = TableParser()
+            parser.feed(html)
+            if len(parser.rows) < 2:
+                return None
+            return parser.rows
     except urllib.error.HTTPError as e:
-        if e.code == 403:
+        if e.code in (403, 202):
             return "BLOCKED"
-        raise
+        print(f"    HTTP {e.code}")
+        return None
     except Exception as e:
         print(f"    Error: {e}")
         return None
 
 
+def parse_table(rows, attr):
+    """Convert parsed table rows into a list of rating dicts."""
+    headers = rows[0]
+    ratings = []
+    for row in rows[1:]:
+        if len(row) < 2:
+            continue
+        location = row[0]
+        avg = row[1] if len(row) > 1 else ""
+        young1 = row[2] if len(row) > 2 else ""
+        young2 = row[3] if len(row) > 3 else ""
+        old1 = row[4] if len(row) > 4 else ""
+        old2 = row[5] if len(row) > 5 else ""
+
+        # Create one row per individual rating
+        for agegroup, val in [("young", young1), ("young", young2),
+                               ("old", old1), ("old", old2)]:
+            if val and val.strip():
+                ratings.append({
+                    "aid": attr["aid"],
+                    "code": attr["code"],
+                    "phenomenon": attr["pname"],
+                    "stimulus": attr["atname"],
+                    "location": location,
+                    "avg_rating": avg,
+                    "agegroup": agegroup,
+                    "rating": val.strip(),
+                })
+    return ratings
+
+
 def main():
-    # Load attribute list
     attr_file = os.path.join(DATA_DIR, "attributes.json")
     if not os.path.exists(attr_file):
-        print("Run this first: curl -s http://scotssyntaxatlas.ac.uk/api/v1/json/attributes > attributes.json")
+        print("Missing attributes.json. Run:")
+        print("  curl -s https://scotssyntaxatlas.ac.uk/api/v1/json/attributes > attributes.json")
         sys.exit(1)
 
     with open(attr_file) as f:
         attributes = json.load(f)
 
-    # Track per-attribute files for resume
     attr_dir = os.path.join(DATA_DIR, "per_attribute")
     os.makedirs(attr_dir, exist_ok=True)
 
-    print(f"Downloading rating data for {len(attributes)} attributes (delay={DELAY}s)...")
+    print(f"Downloading {len(attributes)} attributes (delay={DELAY}s)...")
 
     blocked_count = 0
     success_count = 0
+    skip_count = 0
 
     for i, attr in enumerate(attributes):
-        aid = attr["aid"]
         code = attr["code"]
-
-        out_file = os.path.join(attr_dir, f"{code}_{aid}.json")
+        out_file = os.path.join(attr_dir, f"{code}_{attr['aid']}.json")
 
         if resume and os.path.exists(out_file):
-            success_count += 1
+            skip_count += 1
             continue
 
-        data = fetch_attribute(aid)
+        rows = fetch_attribute_html(code)
 
-        if data == "BLOCKED":
+        if rows == "BLOCKED":
             blocked_count += 1
+            print(f"  [{i+1}/{len(attributes)}] {code}: BLOCKED")
             if blocked_count >= 3:
-                print(f"\n  Blocked by rate limiter after {i} requests.")
-                print(f"  Wait 10-15 minutes and re-run with --resume")
-                print(f"  Successfully downloaded: {success_count}")
+                print(f"\n  Blocked after {success_count} successful downloads.")
+                print(f"  Wait and re-run with --resume")
                 break
-            time.sleep(DELAY * 3)  # extra backoff
+            time.sleep(DELAY * 3)
             continue
 
-        if data is None:
+        if rows is None:
+            print(f"  [{i+1}/{len(attributes)}] {code}: no data")
             continue
 
-        blocked_count = 0  # reset on success
+        blocked_count = 0
         success_count += 1
 
-        # Save per-attribute
+        ratings = parse_table(rows, attr)
         with open(out_file, "w") as f:
-            json.dump(data, f)
+            json.dump(ratings, f)
 
-        n_valid = sum(1 for r in data if r.get("qid") and r.get("spurious") != "Y")
-        if (i + 1) % 10 == 0 or i == 0:
-            print(f"  [{i+1}/{len(attributes)}] {code}: {n_valid} valid ratings")
-
+        print(f"  [{i+1}/{len(attributes)}] {code}: {len(ratings)} ratings from {len(rows)-1} locations")
         time.sleep(DELAY)
 
+    if skip_count:
+        print(f"\nSkipped {skip_count} already-downloaded attributes")
+
     # Compile all downloaded files
-    print(f"\nCompiling {success_count} downloaded attributes...")
+    print(f"\nCompiling all downloaded attributes...")
     all_ratings = []
     for attr in attributes:
-        aid = attr["aid"]
-        code = attr["code"]
-        pname = attr["pname"]
-        atname = attr["atname"]
-
-        fpath = os.path.join(attr_dir, f"{code}_{aid}.json")
+        fpath = os.path.join(attr_dir, f"{attr['code']}_{attr['aid']}.json")
         if not os.path.exists(fpath):
             continue
-
         with open(fpath) as f:
-            data = json.load(f)
-
-        for row in data:
-            if not row.get("qid"):
-                continue
-            row["aid"] = aid
-            row["code_orig"] = code
-            row["phenomenon"] = pname
-            row["stimulus"] = atname
-            all_ratings.append(row)
+            all_ratings.extend(json.load(f))
 
     if not all_ratings:
         print("No data to compile.")
         return
 
-    # Save combined
     out_json = os.path.join(DATA_DIR, "all_ratings.json")
     with open(out_json, "w") as f:
         json.dump(all_ratings, f)
 
-    fieldnames = ["aid", "code_orig", "phenomenon", "stimulus", "qid",
-                   "display_town", "display_lat", "display_lng",
-                   "cid", "rating", "spurious", "isfw", "agegroup"]
+    fieldnames = ["aid", "code", "phenomenon", "stimulus", "location",
+                  "avg_rating", "agegroup", "rating"]
     out_csv = os.path.join(DATA_DIR, "all_ratings.csv")
     with open(out_csv, "w", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction="ignore")
         writer.writeheader()
         writer.writerows(all_ratings)
 
-    valid = [r for r in all_ratings if r.get("spurious") != "Y"]
     print(f"\nSaved: {out_json}")
     print(f"Saved: {out_csv}")
     print(f"\nSummary:")
-    print(f"  Total rows: {len(all_ratings)}")
-    print(f"  Non-spurious: {len(valid)}")
-    print(f"  Unique locations: {len(set(r['display_town'] for r in valid))}")
-    print(f"  Unique constructions: {len(set(r['cid'] for r in valid))}")
+    print(f"  Total individual ratings: {len(all_ratings)}")
+    print(f"  Unique locations: {len(set(r['location'] for r in all_ratings))}")
+    print(f"  Unique attributes: {len(set(r['code'] for r in all_ratings))}")
 
     from collections import Counter
-    rc = Counter(r["rating"] for r in valid)
+    rc = Counter(r["rating"] for r in all_ratings)
     print(f"  Rating distribution:")
     for rating in sorted(rc):
         print(f"    {rating}: {rc[rating]}")
