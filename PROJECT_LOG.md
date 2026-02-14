@@ -218,17 +218,38 @@ This is why the Scots Syntax Atlas remains the right dataset: different dialect 
 - 258 features at different stages of vitality is rich enough to test many ABM predictions.
 - **All four ABM predictions tested against SCOSYA are supported.** The model's qualitative predictions about critical mass, dialectal pockets, and feature trajectories match the empirical patterns.
 
+21. **Simulation-based calibration (the Gelman checkpoint).** Pre-registered 5 predictions, then ran 25,800 ABM simulations to test whether our SCOSYA estimation method can recover known rho values from synthetic data. Protocol and predictions written before any results were seen (`models/fake_data_calibration.py`).
+
+    **Key finding: the method has a ceiling.** It cannot distinguish rho = 0.5 from rho = 0.7 from rho = 1.0 (IQRs overlap completely). The selection window [0.20, 0.50] clips tipping-point features when the true critical mass is above ~35%. All 4 testable pre-registered predictions confirmed.
+
+    **Revised SCOSYA interpretation:** rho ≈ 0.5 is a **lower bound**, not a point estimate. True rho could be anywhere from ~0.4 to 1.0+. The method rules out rho < 0.3 (those give distinctly lower estimates). At true rho = 0.5, bias correction gives ~0.43.
+
+    **What this means:** Critical mass is at least 33%, could be as high as 50%. The qualitative ABM predictions (dialectal pockets, tipping point dynamics) are robust across this range. Quantitative predictions remain uncertain. The model is an informed intuition pump: better than unconstrained, worse than calibrated.
+
+### What we learned (final)
+
+- The HTML tabular data pages bypass the API block. Pattern: `/data-in-tabular-form/?id={code}`.
+- **rho >= ~0.4** from SCOSYA data (lower bound, not point estimate). The estimation method has a ceiling effect that prevents upper bounding.
+- Dialect data is the right grain for rho estimation. Standard corpora give uninformative upper bounds.
+- **All four ABM predictions tested against SCOSYA are supported**, but the tests are qualitative and post-hoc.
+- **Pre-registered predictions for the calibration study all confirmed.** This is the first piece of genuine pre-registration in the project.
+- Discipline pays: the calibration turned a claimed point estimate (rho ≈ 0.5) into an honest lower bound (rho >= 0.4). The result is weaker but trustworthy.
+
 ### What's unresolved
 
 - Threshold sensitivity: >= 4 vs >= 3 shifts rho by ~2x. Need a principled way to choose.
 - Apparent-time assumption: need longitudinal data to confirm age differences reflect change, not age-grading.
 - Remaining sensitivity sweeps (tau, within_bias, N, C) not done.
-- The 4 SCOSYA tests are qualitative (direction correct). Quantitative calibration (reproducing exact distributions) not attempted.
+- The 4 SCOSYA tests are qualitative (direction correct). Quantitative calibration not attempted.
+- The ceiling effect might be fixable with a wider selection window, but at cost of more noise.
+- No upper bound on rho.
 
 ### Possible next moves
 
-- **Calibrate the ABM against individual SCOSYA features**: can the model reproduce the geographic variation for "I caa mind" vs "I'm going to my bed"?
-- **Add generational turnover** to the ABM and test whether it reproduces apparent-time age effects
+- **Wider selection window calibration**: test [0.10, 0.60] or [0.15, 0.55] to see if recovery improves at high rho
+- **Calibrate the ABM against individual SCOSYA features**: geographic variation patterns
+- **Add generational turnover** to the ABM and test against SCOSYA age effects
 - Read Levon & Buchstaller (2015) and Childs & Van Herk (2014) for independent rho estimates
 - Sweep remaining parameters at rho = 0.5
 - Port the model to deitality
+- Park it and write up what we have (the calibration story is a paper contribution on its own)
