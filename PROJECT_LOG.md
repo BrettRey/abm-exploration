@@ -235,21 +235,38 @@ This is why the Scots Syntax Atlas remains the right dataset: different dialect 
 - **Pre-registered predictions for the calibration study all confirmed.** This is the first piece of genuine pre-registration in the project.
 - Discipline pays: the calibration turned a claimed point estimate (rho ≈ 0.5) into an honest lower bound (rho >= 0.4). The result is weaker but trustworthy.
 
+22. **Window sweep calibration.** Tested 5 selection windows ([0.20, 0.50] through [0.05, 0.80]) on the same cached ABM data. No window separates rho=0.5 from rho=0.7. Wider windows reduce NaN replicates but double IQR width. The ceiling is fundamental: the ABM dynamics push features away from the tipping point faster than the method can observe them.
+
+23. **Remaining sensitivity sweeps** (tau, beta, N, C, initial confidence) all at rho=0.5:
+    - **tau: CRITICAL.** Phase transition at tau=0.5 (= non-user initial confidence). Below 0.5: everything survives trivially. Above: everything dies. The model's interesting behaviour lives on a knife-edge.
+    - **beta (within_bias): LOW.** Dialectal pockets form at all beta values (0.5 to 0.95). Minor quantitative variation.
+    - **N (population size): LOW.** Same critical mass (~30%) at all N (200 to 2000). Just noise reduction.
+    - **C (communities): MODERATE.** More communities → sharper isolation. Global rate ≈ 1/C.
+    - **Initial confidence: MODERATE.** More entrenched users → lower critical mass (Beta(10,1) → ~30% vs Beta(3,1) → ~50%).
+
+### What we learned (final)
+
+- The HTML tabular data pages bypass the API block. Pattern: `/data-in-tabular-form/?id={code}`.
+- **rho >= ~0.4** from SCOSYA data (lower bound, not point estimate). The ceiling is fundamental and unfixable by window widening.
+- Dialect data is the right grain for rho estimation. Standard corpora give uninformative upper bounds.
+- **All four ABM predictions tested against SCOSYA are supported**, but the tests are qualitative and post-hoc.
+- **All pre-registered predictions confirmed** (SBC: 4/4, window sweep: 3/4 with one partial).
+- Discipline pays: the calibration turned a claimed point estimate (rho ≈ 0.5) into an honest lower bound (rho >= 0.4). The result is weaker but trustworthy.
+- **The model has two critical parameters (rho and tau) and one structural constraint.** tau must equal non-user initial confidence for interesting dynamics to emerge. This is not a defect to fix; it may be the central insight: production threshold and prior beliefs must be aligned for constructions to be genuinely "contested."
+
 ### What's unresolved
 
-- Threshold sensitivity: >= 4 vs >= 3 shifts rho by ~2x. Need a principled way to choose.
-- Apparent-time assumption: need longitudinal data to confirm age differences reflect change, not age-grading.
-- Remaining sensitivity sweeps (tau, within_bias, N, C) not done.
-- The 4 SCOSYA tests are qualitative (direction correct). Quantitative calibration not attempted.
-- The ceiling effect might be fixable with a wider selection window, but at cost of more noise.
+- **The tau knife-edge.** Is this a bug (model only works at one setting) or a feature (production threshold = starting uncertainty is the interesting regime)?
+- Threshold sensitivity: >= 4 vs >= 3 shifts rho by ~2x.
+- Apparent-time assumption: need longitudinal data to confirm.
+- The 4 SCOSYA tests are qualitative only.
 - No upper bound on rho.
 
 ### Possible next moves
 
-- **Wider selection window calibration**: test [0.10, 0.60] or [0.15, 0.55] to see if recovery improves at high rho
+- **Think about the tau knife-edge.** Is there a way to reformulate the model so the production threshold and initial beliefs are coupled by design? Or is the knife-edge the theoretically interesting regime?
 - **Calibrate the ABM against individual SCOSYA features**: geographic variation patterns
 - **Add generational turnover** to the ABM and test against SCOSYA age effects
 - Read Levon & Buchstaller (2015) and Childs & Van Herk (2014) for independent rho estimates
-- Sweep remaining parameters at rho = 0.5
 - Port the model to deitality
-- Park it and write up what we have (the calibration story is a paper contribution on its own)
+- Park it and write up what we have

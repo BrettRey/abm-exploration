@@ -209,15 +209,77 @@ Only rho = 0.3 (and marginally 0.2) show bimodal confidence distributions. At lo
 | Random > clustering | **FRAGILE** | Reverses at high rho |
 | Bimodality | **FRAGILE** (general) / **ROBUST** (at tipping point) | Only near phase transition |
 
-### 5.4 Remaining sensitivity sweeps (not yet run)
+### 5.4 Remaining sensitivity sweeps (completed 2026-02-14)
 
-| Parameter | Values to test | Expected sensitivity |
-|-----------|---------------|---------------------|
-| tau | 0.3, 0.4, 0.5, 0.6, 0.7 | MEDIUM. Lower tau = more exploration. |
-| beta (within_bias) | 0.5, 0.6, 0.7, 0.8, 0.9, 0.95 | HIGH for clustering findings. |
-| N | 200, 500, 1000, 2000, 5000 | LOW expected (same dynamics, less noise). |
-| C (communities) | 5, 10, 20 | MEDIUM for clustering. |
-| Initial confidence | (3,1), (5,2), (8,2), (10,1) | MEDIUM. Affects inertia. |
+All sweeps at rho = 0.5. Pre-registered predictions in `models/sensitivity_sweep.py`.
+
+**A. tau (production threshold): CRITICAL SENSITIVITY**
+
+| tau | f=0% | f=10% | f=20% | f=30% | f=50% |
+|-----|------|-------|-------|-------|-------|
+| 0.3 | 100% | 100% | 100% | 100% | 100% |
+| 0.4 | 100% | 100% | 100% | 100% | 100% |
+| 0.5 | 0% | 0% | 1% | 81% | 100% |
+| 0.6 | 0% | 0% | 0% | 0% | 39% |
+| 0.7 | 0% | 0% | 0% | 0% | 0% |
+
+There is a **phase transition at tau = 0.5**, the initial confidence of non-users (Beta(1,1) → c = 0.5). Below tau = 0.5, non-users are already above the production threshold, so everyone produces from step 1 and everything "survives" trivially. Above tau = 0.5, agents need substantial positive evidence to start producing, and at rho = 0.5 preemption dominates.
+
+**This means all the model's interesting dynamics live on a knife-edge: tau must equal the initial non-user confidence.** The critical mass, dialectal pockets, bimodality, and other findings all depend on tau = 0.5 coinciding with non-user c = 0.5. This is not a free parameter choice; it's a structural constraint. The model only produces non-trivial behavior when the production threshold exactly matches the starting belief of non-users.
+
+Pre-registered prediction was "MEDIUM sensitivity, critical mass scales with tau." Reality: **CRITICAL sensitivity, phase transition.** Prediction rejected in magnitude.
+
+**B. beta (within-community bias): LOW SENSITIVITY**
+
+| beta | Random | Clustered (global) | User comm | Others |
+|------|--------|-------------------|-----------|--------|
+| 0.50 | 2% | 9% | 92% | 0% |
+| 0.60 | 2% | 10% | 98% | 0% |
+| 0.70 | 2% | 10% | 99% | 0% |
+| 0.80 | 2% | 10% | 100% | 0% |
+| 0.90 | 2% | 10% | 100% | 0% |
+| 0.95 | 2% | 10% | 100% | 0% |
+
+Dialectal pockets form at all beta values. The user community saturates at 92-100%; other communities always die. Pre-registered prediction was "HIGH sensitivity." Reality: low. Prediction wrong on magnitude.
+
+**C. N (population size): LOW SENSITIVITY (as predicted)**
+
+Critical mass is ~30% at all N ∈ {200, 500, 1000, 2000}. Slight noise increase at N=200 (17% at f=0.20 vs 1% for larger N).
+
+**D. C (communities): MODERATE SENSITIVITY**
+
+| C | Community size | User comm | Others | Global |
+|---|---------------|-----------|--------|--------|
+| 5 | 200 | 84% | 0% | 15% |
+| 10 | 100 | 100% | 0% | 10% |
+| 20 | 50 | 100% | 0% | 5% |
+| 50 | 20 | 100% | 0% | 2% |
+
+More communities → sharper isolation. User community always survives; global rate ≈ 1/C. At C=5, some leakage to neighbours (user comm = 84%).
+
+**E. Initial confidence: MODERATE SENSITIVITY**
+
+| Beta(a,b) | Mean conf | Threshold |
+|-----------|-----------|-----------|
+| (3, 1) | 0.75 | ~50% |
+| (5, 2) | 0.71 | ~50% |
+| (8, 2) | 0.80 | ~30% |
+| (10, 1) | 0.91 | ~30% |
+
+More entrenched initial users → lower critical mass. This makes sense: entrenched users resist preemption longer, giving marginal agents more positive evidence.
+
+### 5.5 What survived the full audit
+
+| Parameter | Sensitivity | Finding |
+|-----------|-----------|---------|
+| **rho** | **CRITICAL** | Gates everything. Critical mass = rho/(1+rho). |
+| **tau** | **CRITICAL** | Phase transition at tau = non-user initial confidence. Model only interesting on the knife-edge. |
+| beta | LOW | Pockets form at all beta. Minor quantitative variation. |
+| N | LOW | Same threshold at all N. Noise reduction only. |
+| C | MODERATE | More communities → sharper pockets. Global rate ≈ 1/C. |
+| Init. conf. | MODERATE | More entrenched → lower critical mass (~30% vs ~50%). |
+
+**Two parameters dominate: rho and tau.** And tau is structurally constrained to equal the non-user starting confidence for the model to produce interesting behaviour. This means the effective free parameter count is lower than the parameter table suggests: rho is the only genuinely free parameter that matters, and tau is locked by the model's initialization logic.
 
 
 ## 6. Mean-Field Analysis (completed 2026-02-14)
@@ -388,14 +450,27 @@ Our SCOSYA estimate of rho ≈ 0.5 provides a **lower bound**, not a point estim
 - Whether the ABM dynamics match real-world language change timescales
 - Whether the estimation method would work with real gradient ratings (not binary)
 - Whether the threshold sensitivity (>= 3 vs >= 4) interacts with the ceiling effect
-- Whether a wider selection window could improve recovery at high rho (at cost of more noise)
+
+### Window sweep: the ceiling is fundamental
+
+Tested five selection windows on the same cached ABM data (see `models/window_sweep_calibration.py`):
+
+| Window | Mean |bias| | Mean IQR | Pairs separated |
+|--------|-----------|----------|-----------------|
+| [0.20, 0.50] | 0.167 | 0.083 | 2/4 |
+| [0.15, 0.55] | 0.141 | 0.136 | 1/4 |
+| [0.10, 0.60] | 0.190 | 0.178 | 0/4 |
+| [0.10, 0.70] | 0.155 | 0.187 | 0/4 |
+| [0.05, 0.80] | 0.229 | 0.174 | 0/4 |
+
+**No window separates rho = 0.5 from rho = 0.7.** Wider windows reduce NaN replicates but increase noise (IQR width doubles). The tradeoff is unfavourable: the original [0.20, 0.50] is actually the best for distinguishing low rho values. The ceiling is not an artifact of the window choice; it is fundamental to the estimation method. The ABM dynamics push features away from the tipping point faster than they can be observed.
 
 
 ## 9. Open Questions
 
-- ~~Can rho be estimated empirically?~~ **Partially answered, then calibrated.** SCOSYA data gives rho >= ~0.4 (lower bound). The estimation method cannot distinguish rho = 0.5 from rho = 1.0 due to a ceiling effect in the selection window. See Section 8.
+- ~~Can rho be estimated empirically?~~ **Partially answered, then calibrated.** SCOSYA data gives rho >= ~0.4 (lower bound). The estimation method cannot distinguish rho = 0.5 from rho = 1.0 due to a fundamental ceiling effect. Window widening does not help.
+- **The tau knife-edge.** The model only produces interesting dynamics when tau exactly equals the initial non-user confidence (both currently 0.5). This is the most important structural finding from the sensitivity audit. Either: (a) this is a genuine constraint that limits the model's applicability, or (b) the model should be reformulated so the production threshold and initial beliefs are coupled by design rather than coincidence.
 - **Does generational turnover change equilibria?** Currently beliefs only accumulate and the system freezes. Turnover might allow forms to revive or die on longer timescales. The SCOSYA age-stratification data could test this directly.
 - **Is there a connection to language change S-curves?** The spread of a form from seed to saturation (at rho < 0.3) looks like it should follow an S-curve. Is it logistic? What's the rate parameter?
-- **What happens at the phase boundary?** The rho = 0.3, f = 0.08 cell shows 54% producers (right at the boundary). Does this represent a stable mixed equilibrium or a bistable system that flips to 0% or 100% on longer timescales?
 - **Can we improve the mean-field?** The two-population deterministic model misses the cascade dynamics. A stochastic mean-field (Langevin equation or master equation) might capture the threshold-crossing noise that makes the ABM more forgiving.
 - **Can the ABM reproduce the SCOSYA feature distribution?** Run the ABM at rho = 0.5 with features seeded at varying initial frequencies and compare the resulting distribution of acceptance rates against the observed SCOSYA distribution.
