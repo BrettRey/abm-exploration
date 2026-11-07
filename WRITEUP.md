@@ -1,5 +1,7 @@
 # Population Dynamics of Grammaticality: An ABM Exploration
 
+> **Superseded interpretation, retained as a research record.** The October 2026 audits refuted the universal critical-seed formula, the alleged derived cutoff constraint, and the claimed empirical lower bound on rho. The sections below should not be cited as established findings. Read [CURRENT_FINDINGS.md](CURRENT_FINDINGS.md) and its linked reconciliations for the current conclusions and their limits.
+
 ## Summary
 
 We built a multi-agent extension of the OVMG's Bayesian evidence-accumulation model of grammaticality. The single-agent model (Reynolds, in prep) shows how preemption from absence-in-relevant-contexts can push a construction toward rejection. The multi-agent version makes preemption *endogenous*: an agent's absence-of-evidence depends on what its neighbours actually produce.

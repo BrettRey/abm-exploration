@@ -1,5 +1,11 @@
 # ABM Exploration
 
+> **Current findings (7 November 2026):** start with [CURRENT_FINDINGS.md](CURRENT_FINDINGS.md). Independent October audits rejected the universal initial-seed formula, the claimed necessity of matching the cutoff to the prior mean, and the empirical lower bound on rho. They established qualified replacement results for thresholds and persistence. The code is unchanged. The overview below records the February exploration and is not a statement of the current evidential status.
+
+**Current status: parked.** Further research requires a named manuscript claim or a discriminating empirical test.
+
+## Historical February overview
+
 Exploring agent-based modelling as a method, with linguistics as the application domain.
 
 **Status:** Night science. No commitments. First model built and audited (2026-02-14).

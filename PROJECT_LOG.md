@@ -1,4 +1,11 @@
 # Project Log
+<!-- SUMMARY: Historical ABM research log; current interpretation is consolidated in CURRENT_FINDINGS.md after the October audits · status: parked · updated: 2026-11-07 -->
+
+## 2026-11-07: Findings consolidated; further research parked
+
+Added `CURRENT_FINDINGS.md` with the model assumptions, corrected findings, audit links, and a claim map to the current OVMG paper. Added correction notices to the README, specification, and write-up; preserved their historical bodies and all model code. A bounded read of the documented data use did not establish the exposure-to-later-outcome link needed for the proposed opportunity-sensitive learning test, so that test is parked with current materials. This is not a negative claim over all available datasets.
+
+Further proof or simulation work is parked pending a named paper claim or discriminating empirical test. No model code, simulation results, or empirical data changed in this consolidation.
 
 ## 2026-02-14 Session 1: First model built and audited
 

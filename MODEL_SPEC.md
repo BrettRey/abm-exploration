@@ -1,5 +1,7 @@
 # Model Specification: Grammaticality Population Dynamics ABM
 
+> **Historical specification and claims:** the dynamics below define the February model audited in October 2026. Several subsequent derivations and empirical interpretations in this document failed that audit, including the universal seed bound, the cutoff/prior constraint, and the rho calibration. Use [CURRENT_FINDINGS.md](CURRENT_FINDINGS.md) for the corrected claim map and verified reports. This historical text is retained so the original claims remain inspectable; the simulation code has not been revised.
+
 Version: 0.2 (2026-02-14)
 
 ## 1. Generative Model
